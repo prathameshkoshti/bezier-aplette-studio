@@ -14,8 +14,10 @@
     "build:main": "esbuild plugin/code.ts --bundle --outfile=dist/code.js",
     "build:ui": "npx vite build --minify esbuild --emptyOutDir=false",
     "build:watch": "concurrently -n widget,iframe \"npm run build:main -- --watch\" \"npm run build:ui -- --watch\"",
-    "prepare": "husky install",
-    "dev": "concurrently -n tsc,build,vite 'npm:tsc:watch' 'npm:build:watch' 'vite'"
+    "prepare": "husky",
+    "commit-lint": "commitlint -e $GIT_PARAMS",
+    "dev": "concurrently -n tsc,build,vite 'npm:tsc:watch' 'npm:build:watch' 'vite'",
+    "commitlint": "commitlint --edit"
   },
   "author": "Figma",
   "license": "MIT License",
@@ -36,6 +38,8 @@
     "tailwindcss-animate": "1.0.7"
   },
   "devDependencies": {
+    "@commitlint/cli": "19.3.0",
+    "@commitlint/config-conventional": "19.2.2",
     "@eslint/compat": "1.1.1",
     "@eslint/js": "9.16.0",
     "@figma/eslint-plugin-figma-plugins": "0.15.0",
