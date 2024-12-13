@@ -1,0 +1,9 @@
+.point {
+  cursor: pointer;
+}
+
+.handle {
+  position: relative;
+  left: -4px;
+  top: -4px;
+}

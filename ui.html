@@ -1,0 +1,27 @@
+<h2>Color Swatches</h2>
+<div class="container">
+	<div class="color-picker-container">
+	<div class="color-picker">
+		<div class="white-range"></div>
+		<div class="black-range"></div>
+		<div class="color">
+			<div class="thumb">
+			</div>
+		</div>
+	</div>
+	<input class="hue-range" type="range" min=0 max=360 value="0" />
+	</div>
+</div>
+<script>
+
+  document.getElementById('create').onclick = () => {
+    const textbox = document.getElementById('count');
+    const count = parseInt(textbox.value, 10);
+    parent.postMessage({ pluginMessage: { type: 'create-rectangles', color: textbox.value } }, '*')
+  }
+
+  document.getElementById('cancel').onclick = () => {
+    parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+  }
+
+</script>

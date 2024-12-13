@@ -1,0 +1,50 @@
+.hueRange {
+	background: linear-gradient(to right, red 0%, #ff0 17%, lime 33%, cyan 50%, blue 66%, #f0f 83%, red 100%);
+  height: 10px !important;
+	outline: none;
+	border-radius: 7px;
+  margin-block: 2rem;
+}
+
+.hueRange::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 15px;
+  height: 15px;
+	background: transparent;
+  cursor: pointer;
+	border-radius: 10px;
+	border: 4px solid white;
+	transition: 0.2s ease;
+	box-shadow: 0px 0px 10px 0px #8B8589;
+}
+
+.colorPickerContainer {
+  width: var(--color-picker-container-size);
+  height: calc(var(--color-picker-container-size) + 64px);
+}
+
+.colorGraph {
+  height: var(--color-picker-container-size);
+  width: var(--color-picker-container-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+  background-position: 0 0;
+  background-size: 10px 10px;
+}
+
+.colorPicker {
+  height: var(--color-picker-size);
+  width: var(--color-picker-size);
+}
+
+.whiteOverlay {
+	background: linear-gradient(to right, #fff 0%, rgba(255,255,255,0) 100%);
+	z-index: 1;
+}
+
+.blackOverlay {
+	background: linear-gradient(to bottom, transparent 0%, #000 100%);
+	z-index: 2
+}
