@@ -7,14 +7,11 @@ import {
   SelectValue,
 } from '@components/ui/select';
 import { curvesTypes, curveSubTypes } from '@constants/curves';
-import type { CurveTypeProps } from './types';
+import useColorPicker from '@store/colorPicker';
 
-function CurveType({
-  curveType,
-  curveSubType,
-  handleCurveType,
-  handleCurveSubType,
-}: CurveTypeProps) {
+function CurveType() {
+  const { curveType, updateCurveType, curveSubType, updateCurveSubType } =
+    useColorPicker();
   const curveTypeOptions = Object.values(curvesTypes);
   const subTypeOptions = Object.values(curveSubTypes);
 
@@ -22,7 +19,7 @@ function CurveType({
     <>
       <div className="w-40 flex flex-col gap-2">
         <Label>Curve Type</Label>
-        <Select onValueChange={handleCurveType} value={curveType}>
+        <Select onValueChange={updateCurveType} value={curveType}>
           <SelectTrigger>
             <SelectValue placeholder="Select Type" />
           </SelectTrigger>
@@ -39,7 +36,7 @@ function CurveType({
         {curvesTypes[curveType].subTypes ? (
           <>
             <Label>Sub Type</Label>
-            <Select onValueChange={handleCurveSubType} value={curveSubType}>
+            <Select onValueChange={updateCurveSubType} value={curveSubType}>
               <SelectTrigger>
                 <SelectValue placeholder="Select Sub Type" />
               </SelectTrigger>
