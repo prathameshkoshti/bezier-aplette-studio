@@ -8,6 +8,7 @@ import { viteSingleFile } from 'vite-plugin-singlefile';
 const alias = {
   '@appTypes': resolve(__dirname, './ui/types'),
   '@components': resolve(__dirname, './ui/components'),
+  '@store': resolve(__dirname, './ui/store'),
   '@constants': resolve(__dirname, './ui/constants'),
   '@utils': resolve(__dirname, './ui/utils'),
 };

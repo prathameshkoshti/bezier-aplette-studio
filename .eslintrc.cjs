@@ -70,6 +70,6 @@ module.exports = {
     },
   ],
   parserOptions: {
-    project: ['./tsconfig.json'],
+    project: ['./ui/tsconfig.json', './tsconfig.json'],
   },
 };

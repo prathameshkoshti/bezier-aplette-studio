@@ -1,10 +1,11 @@
-import clsx from 'clsx';
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useRef } from 'react';
 import type { FormEvent } from 'react';
+import clsx from 'clsx';
 import type { CoordType, Point } from '@appTypes/coords';
-import BezierCurveGraph from '@components/BezierCurveGraph';
+import type { CoordinatesAction } from '@store/types';
 import { Input } from '@components/ui/input';
-import type { ColorPickerProps } from './types';
+import BezierCurveGraph from '@components/BezierCurveGraph';
+import useColorPicker from '@store/colorPicker';
 import styles from './colorPicker.module.css';
 
 const hueRangeClasses = clsx(
@@ -27,38 +28,37 @@ const blackOverlayClasses = clsx(
   styles.blackOverlay,
 );
 
-function ColorPicker({ hue, updateHue }: ColorPickerProps) {
+function ColorPicker() {
   const colorPickerRef = useRef<HTMLDivElement>(null);
-
-  const [startPoint, setStartPoint] = useState<Point>({
-    x: 95,
-    y: 95,
-  });
-  const [endPoint, setEndPoint] = useState({
-    x: 360,
-    y: 360,
-  });
-
-  const [startPointHandle, setStartPointHandle] = useState<Point>({
-    x: 360,
-    y: 95,
-  });
-  const [endPointHandle, setEndPointHandle] = useState({
-    x: 360,
-    y: 95,
-  });
+  const {
+    hue,
+    updateHue,
+    startPoint,
+    updateStartPoint,
+    endPoint,
+    updateEndPoint,
+    startPointHandle,
+    updateStartPointHandle,
+    endPointHandle,
+    updateEndPointHandle,
+  } = useColorPicker();
 
   const updateCoords: Record<
     CoordType,
-    React.Dispatch<React.SetStateAction<Point>>
+    CoordinatesAction[keyof CoordinatesAction]
   > = useMemo(
     () => ({
-      startPoint: setStartPoint,
-      endPoint: setEndPoint,
-      startPointHandle: setStartPointHandle,
-      endPointHandle: setEndPointHandle,
+      startPoint: updateStartPoint,
+      endPoint: updateEndPoint,
+      startPointHandle: updateStartPointHandle,
+      endPointHandle: updateEndPointHandle,
     }),
-    [],
+    [
+      updateEndPoint,
+      updateEndPointHandle,
+      updateStartPoint,
+      updateStartPointHandle,
+    ],
   );
 
   const handlePointCoords = (coords: Point, type: CoordType) => {

@@ -6,7 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@components/ui/select';
-import { curvesTypes, subTypes } from '@constants/curves';
+import { curvesTypes, curveSubTypes } from '@constants/curves';
 import type { CurveTypeProps } from './types';
 
 function CurveType({
@@ -16,7 +16,7 @@ function CurveType({
   handleCurveSubType,
 }: CurveTypeProps) {
   const curveTypeOptions = Object.values(curvesTypes);
-  const subTypeOptions = Object.values(subTypes);
+  const subTypeOptions = Object.values(curveSubTypes);
 
   return (
     <>

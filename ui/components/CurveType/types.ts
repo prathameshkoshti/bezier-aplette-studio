@@ -1,8 +1,8 @@
-import { CurveTypes } from '@appTypes/curves';
+import { CurveSubType, CurveType } from '@appTypes/curves';
 
 export type CurveTypeProps = {
-  curveType: CurveTypes;
+  curveType: CurveType;
   curveSubType: string;
-  handleCurveType: (curveType: CurveTypes) => void;
-  handleCurveSubType: (curveSubType: string) => void;
+  handleCurveType: (curveType: CurveType) => void;
+  handleCurveSubType: (curveSubType: CurveSubType) => void;
 };

@@ -1,3 +1,5 @@
-import { curvesTypes } from '@constants/curves';
+import { curvesTypes, curveSubTypes } from '@constants/curves';
 
-export type CurveTypes = keyof typeof curvesTypes;
+export type CurveType = keyof typeof curvesTypes;
+
+export type CurveSubType = keyof typeof curveSubTypes;

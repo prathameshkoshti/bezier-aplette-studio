@@ -70,16 +70,16 @@ export const curvesTypes = {
   },
 };
 
-export const subTypes = {
-  easeInCubic: {
+export const curveSubTypes = {
+  easeIn: {
     id: 'easeIn',
     label: 'Ease In',
   },
-  easeOutCubic: {
+  easeOut: {
     id: 'easeOut',
     label: 'Ease Out',
   },
-  easeInOutCubic: {
+  easeInOut: {
     id: 'easeInOut',
     label: 'Ease In Out',
   },
