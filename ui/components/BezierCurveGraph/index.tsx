@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { Point as PointType } from '@appTypes/coords';
 import { COLOR_PICKER_CONTAINER_SIZE } from '@constants/colors';
 import type { BezierCurveGraphProps } from './types';
+import { MAX_BOUNDARY, MIN_BOUNDARY } from './constants';
 import Curve from './components/Curve';
 import Handle from './components/Handle';
 import Point from './components/Point';
@@ -96,14 +97,8 @@ function BezierCurveGraph({
         x={startPoint.x}
         y={startPoint.y}
         type="startPoint"
-        maxBoundary={{
-          x: 375,
-          y: 375,
-        }}
-        minBoundary={{
-          x: 75,
-          y: 75,
-        }}
+        maxBoundary={MAX_BOUNDARY}
+        minBoundary={MIN_BOUNDARY}
         parentCoords={elementPosition}
         handlePointCoords={handlePointCoords}
       />
@@ -112,14 +107,8 @@ function BezierCurveGraph({
         x={endPoint.x}
         y={endPoint.y}
         type="endPoint"
-        maxBoundary={{
-          x: 375,
-          y: 375,
-        }}
-        minBoundary={{
-          x: 75,
-          y: 75,
-        }}
+        maxBoundary={MAX_BOUNDARY}
+        minBoundary={MIN_BOUNDARY}
         parentCoords={elementPosition}
         handlePointCoords={handlePointCoords}
       />
