@@ -1,10 +1,17 @@
+import { useShallow } from 'zustand/react/shallow';
 import type { ChangeEventHandler } from 'react';
 import { Input } from '@components/ui/input';
 import { Label } from '@components/ui/label';
 import useColorPicker from '@store/colorPicker';
 
 function SwatchCount() {
-  const { stepCount, updateStepCount } = useColorPicker();
+  const { stepCount, updateStepCount } = useColorPicker(
+    useShallow((state) => {
+      // eslint-disable-next-line @typescript-eslint/no-shadow
+      const { stepCount, updateStepCount } = state;
+      return { stepCount, updateStepCount };
+    }),
+  );
 
   const handleSwatchCount: ChangeEventHandler<HTMLInputElement> = (event) => {
     updateStepCount(+event.currentTarget.value);

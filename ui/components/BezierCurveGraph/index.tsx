@@ -1,21 +1,77 @@
-import { useEffect, useRef, useState } from 'react';
-import type { Point as PointType } from '@appTypes/coords';
+/* eslint-disable @typescript-eslint/no-shadow */
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useShallow } from 'zustand/react/shallow';
+import type { CoordType, Point as PointType } from '@appTypes/coords';
+import type { CoordinatesAction } from '@store/types';
 import { COLOR_PICKER_CONTAINER_SIZE } from '@constants/colors';
-import type { BezierCurveGraphProps } from './types';
+import useColorPicker from '@store/colorPicker';
 import { MAX_BOUNDARY, MIN_BOUNDARY } from './constants';
 import Curve from './components/Curve';
 import Handle from './components/Handle';
 import Point from './components/Point';
 import styles from './bezierCurveGraph.module.css';
 
-function BezierCurveGraph({
-  hue,
-  startPoint,
-  endPoint,
-  startPointHandle,
-  endPointHandle,
-  handlePointCoords,
-}: BezierCurveGraphProps) {
+function BezierCurveGraph() {
+  const {
+    hue,
+    startPoint, 
+    updateStartPoint,
+    endPoint,
+    updateEndPoint,
+    startPointHandle,
+    updateStartPointHandle,
+    endPointHandle,
+    updateEndPointHandle,
+  } = useColorPicker(
+    useShallow((state) => {
+      const {
+        hue,
+        startPoint,
+        updateStartPoint,
+        endPoint,
+        updateEndPoint,
+        startPointHandle,
+        updateStartPointHandle,
+        endPointHandle,
+        updateEndPointHandle,
+      } = state;
+
+      return {
+        hue,
+        startPoint,
+        updateStartPoint,
+        endPoint,
+        updateEndPoint,
+        startPointHandle,
+        updateStartPointHandle,
+        endPointHandle,
+        updateEndPointHandle,
+      };
+    }),
+  );
+
+  const updateCoords: Record<
+    CoordType,
+    CoordinatesAction[keyof CoordinatesAction]
+  > = useMemo(
+    () => ({
+      startPoint: updateStartPoint,
+      endPoint: updateEndPoint,
+      startPointHandle: updateStartPointHandle,
+      endPointHandle: updateEndPointHandle,
+    }),
+    [
+      updateEndPoint,
+      updateEndPointHandle,
+      updateStartPoint,
+      updateStartPointHandle,
+    ],
+  );
+
+  const handlePointCoords = (coords: PointType, type: CoordType) => {
+    updateCoords[type](coords);
+  };
+
   const containerRef = useRef<SVGSVGElement>(null);
   const [elementPosition, setElementPosition] = useState<PointType | undefined>(
     undefined,

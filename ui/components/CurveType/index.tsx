@@ -1,3 +1,4 @@
+import { useShallow } from 'zustand/react/shallow';
 import { Label } from '@components/ui/label';
 import {
   Select,
@@ -11,7 +12,19 @@ import useColorPicker from '@store/colorPicker';
 
 function CurveType() {
   const { curveType, updateCurveType, curveSubType, updateCurveSubType } =
-    useColorPicker();
+    useColorPicker(
+      useShallow((state) => {
+        // eslint-disable-next-line @typescript-eslint/no-shadow
+        const { curveType, updateCurveType, curveSubType, updateCurveSubType } =
+          state;
+        return {
+          curveType,
+          updateCurveType,
+          curveSubType,
+          updateCurveSubType,
+        };
+      }),
+    );
   const curveTypeOptions = Object.values(curvesTypes);
   const subTypeOptions = Object.values(curveSubTypes);
 

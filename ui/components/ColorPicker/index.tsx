@@ -1,8 +1,7 @@
 import { useMemo, useRef } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 import type { FormEvent } from 'react';
 import clsx from 'clsx';
-import type { CoordType, Point } from '@appTypes/coords';
-import type { CoordinatesAction } from '@store/types';
 import { Input } from '@components/ui/input';
 import BezierCurveGraph from '@components/BezierCurveGraph';
 import useColorPicker from '@store/colorPicker';
@@ -30,40 +29,13 @@ const blackOverlayClasses = clsx(
 
 function ColorPicker() {
   const colorPickerRef = useRef<HTMLDivElement>(null);
-  const {
-    hue,
-    updateHue,
-    startPoint,
-    updateStartPoint,
-    endPoint,
-    updateEndPoint,
-    startPointHandle,
-    updateStartPointHandle,
-    endPointHandle,
-    updateEndPointHandle,
-  } = useColorPicker();
-
-  const updateCoords: Record<
-    CoordType,
-    CoordinatesAction[keyof CoordinatesAction]
-  > = useMemo(
-    () => ({
-      startPoint: updateStartPoint,
-      endPoint: updateEndPoint,
-      startPointHandle: updateStartPointHandle,
-      endPointHandle: updateEndPointHandle,
+  const { hue, updateHue, curveType, curveSubType } = useColorPicker(
+    useShallow((state) => {
+      // eslint-disable-next-line @typescript-eslint/no-shadow
+      const { hue, updateHue, curveType, curveSubType } = state;
+      return { hue, updateHue, curveType, curveSubType };
     }),
-    [
-      updateEndPoint,
-      updateEndPointHandle,
-      updateStartPoint,
-      updateStartPointHandle,
-    ],
   );
-
-  const handlePointCoords = (coords: Point, type: CoordType) => {
-    updateCoords[type](coords);
-  };
 
   const handleHueRangeSlider = (event: FormEvent<HTMLInputElement>) => {
     const { value = '0' } = event.currentTarget;
@@ -81,14 +53,7 @@ function ColorPicker() {
           <div className={whiteOverlayClasses} />
           <div className={blackOverlayClasses} />
         </div>
-        <BezierCurveGraph
-          hue={hue}
-          startPoint={startPoint}
-          endPoint={endPoint}
-          startPointHandle={startPointHandle}
-          endPointHandle={endPointHandle}
-          handlePointCoords={handlePointCoords}
-        />
+        <BezierCurveGraph />
       </div>
       <Input
         onInput={handleHueRangeSlider}
