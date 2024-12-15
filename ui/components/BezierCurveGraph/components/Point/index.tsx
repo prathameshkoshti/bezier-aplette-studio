@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react';
-import convertColor from 'color-convert';
 import type { MouseEventHandler } from 'react';
 import type { EditableCoordsType } from '@appTypes/coords';
+import { getColorForCoordinates } from '@utils/index';
 import type { PointProps } from './types';
 import styles from './point.module.css';
-
-const clamp = (value: number, min: number, max: number) =>
-  Math.max(min, Math.min(max, value));
 
 function Point({
   hue,
@@ -62,24 +59,13 @@ function Point({
 
   useEffect(() => {
     if (minBoundary && maxBoundary && !isHandle && typeof hue !== 'undefined') {
-      const saturationPoint = x - minBoundary.x;
-      const brightnessPoint = y - minBoundary.y;
-
-      const colorPickerWidth = maxBoundary.x - minBoundary.x;
-      const colorPickerHeight = maxBoundary.y - minBoundary.y;
-
-      const saturation = clamp(
-        (saturationPoint / colorPickerWidth) * 100,
-        0,
-        100,
+      const newColor = getColorForCoordinates(
+        hue,
+        { x, y },
+        minBoundary,
+        maxBoundary,
       );
-      const lightness = clamp(
-        100 - (brightnessPoint / colorPickerHeight) * 100,
-        0,
-        100,
-      );
-      const newColor = convertColor.hsv.hex([hue, saturation, lightness]);
-      setColor(`#${newColor}`);
+      setColor(newColor);
     }
   }, [hue, isHandle, maxBoundary, minBoundary, x, y]);
 
