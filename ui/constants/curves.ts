@@ -36,7 +36,6 @@ export const curvesTypes = {
   linear: {
     id: 'linear',
     label: 'Linear',
-    bezierFunction: linear,
     subTypes: false,
   },
   cubic: {
@@ -86,6 +85,7 @@ export const curveSubTypes = {
 };
 
 export const bezierFunctions = {
+  linear,
   easeInCubic,
   easeOutCubic,
   easeInOutCubic,

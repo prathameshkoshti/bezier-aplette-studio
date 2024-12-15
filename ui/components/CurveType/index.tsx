@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+import { useEffect } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { Label } from '@components/ui/label';
 import {
@@ -9,24 +11,70 @@ import {
 } from '@components/ui/select';
 import { curvesTypes, curveSubTypes } from '@constants/curves';
 import useColorPicker from '@store/colorPicker';
+import { getRelativePositionForHandles } from './utils';
 
 function CurveType() {
-  const { curveType, updateCurveType, curveSubType, updateCurveSubType } =
-    useColorPicker(
-      useShallow((state) => {
-        // eslint-disable-next-line @typescript-eslint/no-shadow
-        const { curveType, updateCurveType, curveSubType, updateCurveSubType } =
-          state;
-        return {
-          curveType,
-          updateCurveType,
-          curveSubType,
-          updateCurveSubType,
-        };
-      }),
-    );
+  const {
+    curveType,
+    updateCurveType,
+    curveSubType,
+    updateCurveSubType,
+    startPoint,
+    endPoint,
+    updateStartPointHandle,
+    updateEndPointHandle,
+  } = useColorPicker(
+    useShallow((state) => {
+      const {
+        curveType,
+        updateCurveType,
+        curveSubType,
+        updateCurveSubType,
+        startPoint,
+        endPoint,
+        updateStartPointHandle,
+        updateEndPointHandle,
+      } = state;
+      return {
+        curveType,
+        updateCurveType,
+        curveSubType,
+        updateCurveSubType,
+        startPoint,
+        endPoint,
+        updateStartPointHandle,
+        updateEndPointHandle,
+      };
+    }),
+  );
   const curveTypeOptions = Object.values(curvesTypes);
   const subTypeOptions = Object.values(curveSubTypes);
+
+  useEffect(() => {
+    const { startHandleX, startHandleY, endHandleX, endHandleY } =
+      getRelativePositionForHandles(
+        startPoint,
+        endPoint,
+        curveType,
+        curveSubType,
+      );
+    updateStartPointHandle({
+      x: startHandleX,
+      y: startHandleY,
+    });
+
+    updateEndPointHandle({
+      x: endHandleX,
+      y: endHandleY,
+    });
+  }, [
+    curveType,
+    curveSubType,
+    updateStartPointHandle,
+    startPoint,
+    endPoint,
+    updateEndPointHandle,
+  ]);
 
   return (
     <>
@@ -48,7 +96,7 @@ function CurveType() {
       <div className="w-48 flex flex-col gap-2">
         {curvesTypes[curveType].subTypes ? (
           <>
-            <Label>Sub Type</Label>
+            <Label>Curve Transition</Label>
             <Select onValueChange={updateCurveSubType} value={curveSubType}>
               <SelectTrigger>
                 <SelectValue placeholder="Select Sub Type" />

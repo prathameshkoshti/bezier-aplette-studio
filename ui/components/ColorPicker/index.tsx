@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react';
+import { useRef } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import type { FormEvent } from 'react';
 import clsx from 'clsx';
@@ -29,7 +29,7 @@ const blackOverlayClasses = clsx(
 
 function ColorPicker() {
   const colorPickerRef = useRef<HTMLDivElement>(null);
-  const { hue, updateHue, curveType, curveSubType } = useColorPicker(
+  const { hue, updateHue } = useColorPicker(
     useShallow((state) => {
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const { hue, updateHue, curveType, curveSubType } = state;
