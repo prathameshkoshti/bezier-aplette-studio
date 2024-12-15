@@ -55,7 +55,7 @@ function CurveType() {
   const subTypeOptions = Object.values(curveSubTypes);
 
   useEffect(() => {
-    if (!freeHandMode) {
+    if (!freeHandMode && curveType && curveSubType) {
       const { startHandleX, startHandleY, endHandleX, endHandleY } =
         getRelativePositionForHandles(
           startPoint,
@@ -107,7 +107,7 @@ function CurveType() {
         </SelectGroup>
       </div>
       <div className="w-48 flex flex-col gap-2">
-        {curvesTypes[curveType].subTypes ? (
+        {curveType && curvesTypes[curveType].subTypes ? (
           <SelectGroup>
             <SelectLabel className="px-0">Curve Transition</SelectLabel>
             <Select

@@ -1,4 +1,5 @@
 import ColorPicker from '@components/ColorPicker';
+import Button from '@components/ui/button';
 import StepCount from '@components/StepCount';
 import CurveTypeSelect from '@components/CurveType';
 import FreeHandModeCheckbox from '@components/FreeHandModeCheckbox';
@@ -9,9 +10,12 @@ function ColorPickerInput() {
     <div className={styles.swatchGenerator}>
       <ColorPicker />
       <FreeHandModeCheckbox />
-      <div className="flex gap-4">
+      <div className="flex gap-4 mb-4">
         <CurveTypeSelect />
         <StepCount />
+      </div>
+      <div>
+        <Button>Generate Color Swatch</Button>
       </div>
     </div>
   );

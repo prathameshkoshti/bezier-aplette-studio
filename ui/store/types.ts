@@ -5,8 +5,8 @@ import type { CurveType, CurveSubType } from '@appTypes/curves';
 export type InputsState = {
   stepCount: number;
   hue: HueValue;
-  curveType: CurveType;
-  curveSubType: CurveSubType;
+  curveType: CurveType | '';
+  curveSubType: CurveSubType | '';
   freeHandMode: boolean;
 };
 

@@ -14,7 +14,7 @@ const containerHalfSize = COLOR_PICKER_CONTAINER_SIZE / 2;
 
 const getCurveFunction = (curveType: CurveType, curveSubType: CurveSubType) => {
   let curve: string = curveType;
-  if (curvesTypes[curveType].subTypes) {
+  if (curveType && curvesTypes[curveType].subTypes) {
     curve = `${curveSubType}${capitalize(curveType)}`;
   }
   return bezierFunctions[curve as keyof typeof bezierFunctions];
