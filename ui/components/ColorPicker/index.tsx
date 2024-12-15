@@ -8,7 +8,7 @@ import useColorPicker from '@store/colorPicker';
 import styles from './colorPicker.module.css';
 
 const hueRangeClasses = clsx(
-  'appearance-none my-4 mx-0 px-0 border-0',
+  'appearance-none my-4 mx-0 px-0 border-0 cursor-pointer',
   styles.hueRange,
 );
 
