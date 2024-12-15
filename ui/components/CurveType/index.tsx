@@ -87,14 +87,14 @@ function CurveType() {
     <>
       <div className="w-40 flex flex-col gap-2">
         <SelectGroup>
-          <SelectLabel className="px-0">Curve Type</SelectLabel>
+          <SelectLabel className="px-0">Curve</SelectLabel>
           <Select
             onValueChange={updateCurveType}
             value={curveType}
             disabled={freeHandMode}
           >
             <SelectTrigger>
-              <SelectValue placeholder="Select Type" />
+              <SelectValue placeholder="Select Curve" />
             </SelectTrigger>
             <SelectContent>
               {curveTypeOptions.map((type) => (
@@ -106,7 +106,7 @@ function CurveType() {
           </Select>
         </SelectGroup>
       </div>
-      <div className="w-48 flex flex-col gap-2">
+      <div className="w-56 flex flex-col gap-2">
         {curveType && curvesTypes[curveType].subTypes ? (
           <SelectGroup>
             <SelectLabel className="px-0">Curve Transition</SelectLabel>
@@ -116,7 +116,7 @@ function CurveType() {
               disabled={freeHandMode}
             >
               <SelectTrigger>
-                <SelectValue placeholder="Select Sub Type" />
+                <SelectValue placeholder="Select Curve Transition" />
               </SelectTrigger>
               <SelectContent>
                 {subTypeOptions.map((subType) => (

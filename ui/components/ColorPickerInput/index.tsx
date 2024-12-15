@@ -11,8 +11,8 @@ function ColorPickerInput() {
       <ColorPicker />
       <FreeHandModeCheckbox />
       <div className="flex gap-4 mb-4">
-        <CurveTypeSelect />
         <StepCount />
+        <CurveTypeSelect />
       </div>
       <div>
         <Button>Generate Color Swatch</Button>
