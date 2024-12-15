@@ -18,7 +18,7 @@ function StepCount() {
   };
   return (
     <div className="w-20 flex flex-col">
-      <Label className="px-2 py-1.5 text-sm font-semibold" htmlFor="step-count">
+      <Label className="py-1.5 text-sm font-semibold" htmlFor="step-count">
         Steps
       </Label>
       <Input

@@ -3,6 +3,7 @@ import { useShallow } from 'zustand/react/shallow';
 import type { FormEvent } from 'react';
 import clsx from 'clsx';
 import { Input } from '@components/ui/input';
+import { Separator } from '@components/ui/separator';
 import BezierCurveGraph from '@components/BezierCurveGraph';
 import useColorPicker from '@store/colorPicker';
 import styles from './colorPicker.module.css';
@@ -63,6 +64,7 @@ function ColorPicker() {
         max={360}
         value={hue}
       />
+      <Separator />
     </div>
   );
 }

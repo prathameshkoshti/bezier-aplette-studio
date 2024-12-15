@@ -87,7 +87,7 @@ function CurveType() {
     <>
       <div className="w-40 flex flex-col gap-2">
         <SelectGroup>
-          <SelectLabel>Curve Type</SelectLabel>
+          <SelectLabel className="px-0">Curve Type</SelectLabel>
           <Select
             onValueChange={updateCurveType}
             value={curveType}
@@ -109,7 +109,7 @@ function CurveType() {
       <div className="w-48 flex flex-col gap-2">
         {curvesTypes[curveType].subTypes ? (
           <SelectGroup>
-            <SelectLabel>Curve Transition</SelectLabel>
+            <SelectLabel className="px-0">Curve Transition</SelectLabel>
             <Select
               onValueChange={updateCurveSubType}
               value={curveSubType}
