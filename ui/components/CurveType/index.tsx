@@ -16,6 +16,7 @@ import { getRelativePositionForHandles } from './utils';
 
 function CurveType() {
   const {
+    freeHandMode,
     curveType,
     updateCurveType,
     curveSubType,
@@ -27,6 +28,7 @@ function CurveType() {
   } = useColorPicker(
     useShallow((state) => {
       const {
+        freeHandMode,
         curveType,
         updateCurveType,
         curveSubType,
@@ -37,6 +39,7 @@ function CurveType() {
         updateEndPointHandle,
       } = state;
       return {
+        freeHandMode,
         curveType,
         updateCurveType,
         curveSubType,
@@ -52,22 +55,24 @@ function CurveType() {
   const subTypeOptions = Object.values(curveSubTypes);
 
   useEffect(() => {
-    const { startHandleX, startHandleY, endHandleX, endHandleY } =
-      getRelativePositionForHandles(
-        startPoint,
-        endPoint,
-        curveType,
-        curveSubType,
-      );
-    updateStartPointHandle({
-      x: startHandleX,
-      y: startHandleY,
-    });
+    if (!freeHandMode) {
+      const { startHandleX, startHandleY, endHandleX, endHandleY } =
+        getRelativePositionForHandles(
+          startPoint,
+          endPoint,
+          curveType,
+          curveSubType,
+        );
+      updateStartPointHandle({
+        x: startHandleX,
+        y: startHandleY,
+      });
 
-    updateEndPointHandle({
-      x: endHandleX,
-      y: endHandleY,
-    });
+      updateEndPointHandle({
+        x: endHandleX,
+        y: endHandleY,
+      });
+    }
   }, [
     curveType,
     curveSubType,
@@ -75,6 +80,7 @@ function CurveType() {
     startPoint,
     endPoint,
     updateEndPointHandle,
+    freeHandMode,
   ]);
 
   return (
@@ -82,7 +88,11 @@ function CurveType() {
       <div className="w-40 flex flex-col gap-2">
         <SelectGroup>
           <SelectLabel>Curve Type</SelectLabel>
-          <Select onValueChange={updateCurveType} value={curveType}>
+          <Select
+            onValueChange={updateCurveType}
+            value={curveType}
+            disabled={freeHandMode}
+          >
             <SelectTrigger>
               <SelectValue placeholder="Select Type" />
             </SelectTrigger>
@@ -100,7 +110,11 @@ function CurveType() {
         {curvesTypes[curveType].subTypes ? (
           <SelectGroup>
             <SelectLabel>Curve Transition</SelectLabel>
-            <Select onValueChange={updateCurveSubType} value={curveSubType}>
+            <Select
+              onValueChange={updateCurveSubType}
+              value={curveSubType}
+              disabled={freeHandMode}
+            >
               <SelectTrigger>
                 <SelectValue placeholder="Select Sub Type" />
               </SelectTrigger>

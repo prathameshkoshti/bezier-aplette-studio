@@ -16,13 +16,18 @@ function Point({
   minBoundary,
   parentCoords,
   handlePointCoords,
+  disabled,
 }: PointProps) {
   const [color, setColor] = useState('transparent');
   const { x: maxX, y: maxY } = maxBoundary ?? { x: 0, y: 0 };
   const { x: minX, y: minY } = minBoundary ?? { x: 0, y: 0 };
 
   const handleMouseDown: MouseEventHandler = () => {
-    if (parentCoords) {
+    if (
+      parentCoords &&
+      ((typeof disabled === 'boolean' && disabled) ||
+        typeof disabled === 'undefined')
+    ) {
       const { x: parentX, y: parentY } = parentCoords;
       document.onmousemove = (event) => {
         let newX = event.pageX - parentX;

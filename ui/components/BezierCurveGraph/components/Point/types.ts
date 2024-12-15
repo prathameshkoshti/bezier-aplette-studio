@@ -15,4 +15,5 @@ export type PointProps = {
   maxBoundary?: Coords;
   minBoundary?: Coords;
   parentCoords?: Coords;
+  disabled?: boolean;
 };
