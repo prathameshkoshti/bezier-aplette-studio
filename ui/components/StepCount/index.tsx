@@ -17,8 +17,10 @@ function StepCount() {
     updateStepCount(+event.currentTarget.value);
   };
   return (
-    <div className="w-20 flex flex-col gap-2">
-      <Label htmlFor="step-count">Steps</Label>
+    <div className="w-20 flex flex-col">
+      <Label className="px-2 py-1.5 text-sm font-semibold" htmlFor="step-count">
+        Steps
+      </Label>
       <Input
         id="step-count"
         type="number"
