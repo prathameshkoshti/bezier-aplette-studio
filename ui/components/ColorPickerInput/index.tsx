@@ -1,5 +1,5 @@
 import ColorPicker from '@components/ColorPicker';
-import SwatchCount from '@components/SwatchCount';
+import StepCount from '@components/StepCount';
 import CurveTypeSelect from '@components/CurveType';
 import styles from './colorPickerInput.module.css';
 
@@ -8,8 +8,8 @@ function ColorPickerInput() {
     <div className={styles.swatchGenerator}>
       <ColorPicker />
       <div className="flex gap-4">
-        <SwatchCount />
         <CurveTypeSelect />
+        <StepCount />
       </div>
     </div>
   );
