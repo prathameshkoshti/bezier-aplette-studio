@@ -1,5 +1,5 @@
 import type { HueValue } from '@appTypes/color';
-import type { CoordType, Point } from '@appTypes/coords';
+import type { CoordType, EditableCoordsType, Point } from '@appTypes/coords';
 
 export type Coords = {
   x: number;
@@ -11,7 +11,7 @@ export type PointProps = {
   x: number;
   y: number;
   type: CoordType;
-  handlePointCoords: (coords: Point, type: CoordType) => void;
+  handlePointCoords?: (coords: Point, type: EditableCoordsType) => void;
   maxBoundary?: Coords;
   minBoundary?: Coords;
   parentCoords?: Coords;

@@ -1,5 +1,4 @@
 import * as React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { cn } from '@utils';
 import { CheckIcon } from '@radix-ui/react-icons';

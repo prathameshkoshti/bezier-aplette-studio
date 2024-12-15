@@ -7,4 +7,7 @@ export type CoordType =
   | 'startPoint'
   | 'endPoint'
   | 'startPointHandle'
-  | 'endPointHandle';
+  | 'endPointHandle'
+  | 'colorPoint';
+
+export type EditableCoordsType = Exclude<CoordType, 'colorPoint'>;

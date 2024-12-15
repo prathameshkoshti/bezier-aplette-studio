@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useShallow } from 'zustand/react/shallow';
-import type { CoordType, Point as PointType } from '@appTypes/coords';
+import type { EditableCoordsType, Point as PointType } from '@appTypes/coords';
 import type { CoordinatesAction } from '@store/types';
 import { COLOR_PICKER_CONTAINER_SIZE } from '@constants/colors';
 import useColorPicker from '@store/colorPicker';
@@ -9,13 +9,14 @@ import { MAX_BOUNDARY, MIN_BOUNDARY } from './constants';
 import Curve from './components/Curve';
 import Handle from './components/Handle';
 import Point from './components/Point';
+import CurvePoints from './components/CurvePoints';
 import styles from './bezierCurveGraph.module.css';
 
 function BezierCurveGraph() {
   const {
     hue,
     freeHandMode,
-    startPoint, 
+    startPoint,
     updateStartPoint,
     endPoint,
     updateEndPoint,
@@ -54,7 +55,7 @@ function BezierCurveGraph() {
   );
 
   const updateCoords: Record<
-    CoordType,
+    EditableCoordsType,
     CoordinatesAction[keyof CoordinatesAction]
   > = useMemo(
     () => ({
@@ -71,7 +72,7 @@ function BezierCurveGraph() {
     ],
   );
 
-  const handlePointCoords = (coords: PointType, type: CoordType) => {
+  const handlePointCoords = (coords: PointType, type: EditableCoordsType) => {
     updateCoords[type](coords);
   };
 
@@ -133,6 +134,7 @@ function BezierCurveGraph() {
         startPointHandle={startPointHandle}
         endPointHandle={endPointHandle}
       />
+      <CurvePoints />
       <Point
         x={startPointHandle.x}
         y={startPointHandle.y}

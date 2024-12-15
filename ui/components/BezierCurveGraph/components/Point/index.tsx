@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import convertColor from 'color-convert';
 import type { MouseEventHandler } from 'react';
+import type { EditableCoordsType } from '@appTypes/coords';
 import type { PointProps } from './types';
 import styles from './point.module.css';
 
@@ -25,6 +26,7 @@ function Point({
   const handleMouseDown: MouseEventHandler = () => {
     if (
       parentCoords &&
+      handlePointCoords &&
       ((typeof disabled === 'boolean' && disabled) ||
         typeof disabled === 'undefined')
     ) {
@@ -45,7 +47,7 @@ function Point({
             x: newX,
             y: newY,
           },
-          type,
+          type as EditableCoordsType,
         );
       };
 
