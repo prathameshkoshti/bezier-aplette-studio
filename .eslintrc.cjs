@@ -17,7 +17,6 @@ module.exports = {
     'prettier',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parser: '@typescript-eslint/parser',
   plugins: ['react-refresh'],
   rules: {
     '@typescript-eslint/consistent-type-definitions': ['off'],

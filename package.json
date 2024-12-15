@@ -17,7 +17,8 @@
     "prepare": "husky",
     "commit-lint": "commitlint -e $GIT_PARAMS",
     "dev": "concurrently -n tsc,build,vite 'npm:tsc:watch' 'npm:build:watch' 'vite'",
-    "commitlint": "commitlint --edit"
+    "commitlint": "commitlint --edit",
+    "knip": "knip"
   },
   "author": "Figma",
   "license": "MIT License",
@@ -31,7 +32,6 @@
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "color-convert": "2.0.1",
-    "framer-motion": "11.14.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwind-merge": "2.5.5",
@@ -39,15 +39,13 @@
     "zustand": "^5.0.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "19.3.0",
-    "@commitlint/config-conventional": "19.2.2",
-    "@eslint/compat": "1.1.1",
-    "@eslint/js": "9.16.0",
+    "@commitlint/cli": "19.6.0",
+    "@commitlint/config-conventional": "19.6.0",
     "@figma/eslint-plugin-figma-plugins": "0.15.0",
-    "@figma/plugin-typings": "1.104.0",
+    "@figma/plugin-typings": "1.105.0",
     "@types/bezier-js": "4.1.3",
     "@types/color-convert": "2.0.4",
-    "@types/node": "22.10.2",
+    "@types/node": "^22.10.2",
     "@types/react": "18.2.38",
     "@types/react-dom": "18.2.16",
     "@vitejs/plugin-react-refresh": "1.3.6",
@@ -63,16 +61,14 @@
     "eslint-plugin-react": "7.37.2",
     "eslint-plugin-react-hooks": "4.3.0",
     "eslint-plugin-react-refresh": "0.4.16",
-    "globals": "15.13.0",
     "husky": "9.1.7",
+    "knip": "^5.40.0",
     "lint-staged": "^15.2.11",
     "postcss": "8.4.49",
     "prettier": "3.4.2",
     "tailwindcss": "3.4.16",
-    "typescript": "5.7.2",
-    "typescript-eslint": "8.18.0",
+    "typescript": "^5.7.2",
     "vite": "6.0.3",
-    "vite-plugin-singlefile": "2.1.0",
-    "vite-svg-loader": "5.1.0"
+    "vite-plugin-singlefile": "2.1.0"
   }
 }

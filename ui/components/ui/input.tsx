@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { cn } from '@utils';
 
-export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
+type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => (
@@ -18,4 +18,5 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 );
 Input.displayName = 'Input';
 
+// eslint-disable-next-line import/prefer-default-export
 export { Input };

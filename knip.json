@@ -1,0 +1,12 @@
+{
+  "entry": ["ui/index.tsx"],
+  "project": ["ui/**/*.ts", "ui/**/*.tsx"],
+  "paths": {
+    "@appTypes/*": ["./ui/types/*"],
+    "@components/*": ["./ui/components/*"],
+    "@constants/*": ["./ui/constants/*"],
+    "@store/*": ["./ui/store/*"],
+    "@utils/*": ["./ui/utils/*"],
+    "@utils": ["./ui/utils"]
+  }
+}
