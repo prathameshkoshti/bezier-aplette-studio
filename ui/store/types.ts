@@ -7,6 +7,7 @@ export type InputsState = {
   hue: HueValue;
   curveType: CurveType;
   curveSubType: CurveSubType;
+  freeHand: boolean;
 };
 
 export type CoordinatesState = {
@@ -21,6 +22,7 @@ export type InputsAction = {
   updateStepCount: (hue: InputsState['stepCount']) => void;
   updateCurveType: (hue: InputsState['curveType']) => void;
   updateCurveSubType: (hue: InputsState['curveSubType']) => void;
+  updateFreeHand: (freeHand: InputsState['freeHand']) => void;
 };
 
 export type CoordinatesAction = {

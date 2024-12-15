@@ -14,12 +14,14 @@ export const createInputsSlice = (
   curveType: 'sine',
   curveSubType: 'easeIn',
   stepCount: 3,
+  freeHand: false,
 
   // state update action
   updateHue: (hue) => set({ hue }),
   updateCurveType: (curveType) => set({ curveType }),
   updateCurveSubType: (curveSubType) => set({ curveSubType }),
   updateStepCount: (stepCount) => set({ stepCount }),
+  updateFreeHand: (freeHand) => set({ freeHand: !freeHand }),
 });
 
 export const createCoordinatesSlice = (
