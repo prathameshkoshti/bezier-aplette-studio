@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import type { FormEvent } from 'react';
 import clsx from 'clsx';
+import type { HueValue } from '@appTypes/color';
 import { Input } from '@components/ui/input';
 import { Separator } from '@components/ui/separator';
 import BezierCurveGraph from '@components/BezierCurveGraph';
@@ -40,7 +41,7 @@ function ColorPicker() {
 
   const handleHueRangeSlider = (event: FormEvent<HTMLInputElement>) => {
     const { value = '0' } = event.currentTarget;
-    updateHue(parseInt(value, 10));
+    updateHue(parseInt(value, 10) as HueValue);
   };
 
   return (
