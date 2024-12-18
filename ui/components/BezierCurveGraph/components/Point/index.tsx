@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { MouseEventHandler } from 'react';
 import type { EditableCoordsType } from '@appTypes/coords';
-import { getColorForCoordinates } from '@utils/index';
+import { getColorForCoordinates } from '@utils';
 import type { PointProps } from './types';
 import styles from './point.module.css';
 
