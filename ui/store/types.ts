@@ -17,6 +17,20 @@ export type CoordinatesState = {
   endPointHandle: Point;
 };
 
+export type Preset = Pick<InputsState, 'stepCount' | 'hue'> &
+  CoordinatesState & { id: string };
+export type Swatch = Preset & { name: string };
+export type Presets = Preset[];
+export type Swatches = Swatch[];
+
+export type PresetsState = {
+  presets: Presets;
+};
+
+export type SwatchesState = {
+  swatches: Swatches;
+};
+
 export type InputsAction = {
   updateHue: (hue: InputsState['hue']) => void;
   updateStepCount: (hue: InputsState['stepCount']) => void;
@@ -36,6 +50,28 @@ export type CoordinatesAction = {
   ) => void;
 };
 
+export type PresetsAction = {
+  loadPreset: (id: string) => void;
+};
+
+export type SwatchesAction = {
+  createSwatch: (swatch: Omit<Swatch, 'id'>) => void;
+  deleteSwatch: (id: string) => void;
+  renameSwatch: (id: string, name: string) => void;
+  loadSwatch: (id: string) => void;
+};
+
 export type SetFunction = (
-  partialState: Partial<InputsState & CoordinatesState>,
+  partialState: Partial<
+    InputsState & CoordinatesState & PresetsState & SwatchesState
+  >,
 ) => void;
+
+export type GetFunction = () => InputsState &
+  InputsAction &
+  CoordinatesState &
+  CoordinatesAction &
+  PresetsState &
+  PresetsAction &
+  SwatchesState &
+  SwatchesAction;
