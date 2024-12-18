@@ -38,3 +38,25 @@ export function getColorForCoordinates(
   const newColor = convertColor.hsv.hex([hue, saturation, lightness]);
   return `#${newColor}`;
 }
+
+export const uuid = () => Date.now().toString(36);
+
+export const getNameFromHue = (hue: HueValue) => {
+  if (hue < 0 || hue > 360) {
+    return 'Invalid hue value. Hue should be between 0 and 360.';
+  }
+
+  if ((hue >= 0 && hue < 15) || (hue >= 346 && hue <= 360)) return 'Red';
+  if (hue >= 15 && hue < 45) return 'Orange';
+  if (hue >= 45 && hue < 75) return 'Yellow';
+  if (hue >= 75 && hue < 105) return 'Green';
+  if (hue >= 105 && hue < 150) return 'Teal';
+  if (hue >= 150 && hue < 180) return 'Cyan';
+  if (hue >= 180 && hue < 210) return 'Blue';
+  if (hue >= 210 && hue < 240) return 'Indigo';
+  if (hue >= 240 && hue < 270) return 'Purple';
+  if (hue >= 270 && hue < 310) return 'Magenta';
+  if (hue >= 310 && hue < 330) return 'Pink';
+
+  return 'Unknown';
+};
