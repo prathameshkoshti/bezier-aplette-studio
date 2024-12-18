@@ -31,6 +31,7 @@ function CurvePoints() {
     <g>
       {swatches.map((color) => (
         <Point
+          key={`${color.x},${color.y}`}
           hue={hue}
           type="colorPoint"
           x={color.x}
