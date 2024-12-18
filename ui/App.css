@@ -70,18 +70,23 @@
   }
 }
 
-.white-overlay, .black-overlay {
-	z-index: 5;
+.container {
+  height: 724px;
+}
+
+.white-overlay,
+.black-overlay {
+  z-index: 5;
   height: var(--color-picker-size);
   width: var(--color-picker-size);
 }
 
 .white-overlay {
-	background: linear-gradient(to right, #fff 0%, rgba(255,255,255,0) 100%);
-	z-index: 1;
+  background: linear-gradient(to right, #fff 0%, rgba(255, 255, 255, 0) 100%);
+  z-index: 1;
 }
 
 .black-overlay {
-	background: linear-gradient(to bottom, transparent 0%, #000 100%);
-	z-index: 2
+  background: linear-gradient(to bottom, transparent 0%, #000 100%);
+  z-index: 2;
 }
