@@ -55,7 +55,12 @@ function CurveType() {
   const subTypeOptions = Object.values(curveSubTypes);
 
   useEffect(() => {
-    if (!freeHandMode && curveType && curveSubType) {
+    if (
+      !freeHandMode &&
+      curveType &&
+      ((curvesTypes[curveType].subTypes && curveSubType) ||
+        !curvesTypes[curveType].subTypes)
+    ) {
       const { startHandleX, startHandleY, endHandleX, endHandleY } =
         getRelativePositionForHandles(
           startPoint,

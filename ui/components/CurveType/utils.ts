@@ -12,7 +12,10 @@ const colorPickerPadding =
 
 const containerHalfSize = COLOR_PICKER_CONTAINER_SIZE / 2;
 
-const getCurveFunction = (curveType: CurveType, curveSubType: CurveSubType) => {
+const getCurveFunction = (
+  curveType: CurveType,
+  curveSubType: CurveSubType | '',
+) => {
   let curve: string = curveType;
   if (curveType && curvesTypes[curveType].subTypes) {
     curve = `${curveSubType}${capitalize(curveType)}`;
@@ -25,7 +28,7 @@ export const getRelativePositionForHandles = (
   startPoint: Point,
   endPoint: Point,
   curveType: CurveType,
-  curveSubType: CurveSubType,
+  curveSubType: CurveSubType | '',
 ) => {
   // calculate curve width and height
   const curveWidth = Math.abs(startPoint.x - endPoint.x);
