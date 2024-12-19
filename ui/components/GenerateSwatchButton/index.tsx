@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import { useShallow } from 'zustand/react/shallow';
-import { getNameFromHue } from '@utils';
 import Button from '@components/ui/button';
 import PaintBucket from '@components/Icons/PaintBucket';
 import useColorPicker from '@store/colorPicker';
@@ -14,6 +13,7 @@ function GenerateSwatchButton() {
     startPointHandle,
     stepCount,
     swatchEditingId,
+    swatchName,
     createSwatch,
     updateSwatch,
   } = useColorPicker(
@@ -26,6 +26,7 @@ function GenerateSwatchButton() {
         startPointHandle,
         stepCount,
         swatchEditingId,
+        swatchName,
         createSwatch,
         updateSwatch,
       } = state;
@@ -38,6 +39,7 @@ function GenerateSwatchButton() {
         startPointHandle,
         stepCount,
         swatchEditingId,
+        swatchName,
         createSwatch,
         updateSwatch,
       };
@@ -53,7 +55,7 @@ function GenerateSwatchButton() {
         startPoint,
         startPointHandle,
         stepCount,
-        name: getNameFromHue(hue),
+        name: swatchName,
         id: swatchEditingId,
       });
     } else {
@@ -64,7 +66,7 @@ function GenerateSwatchButton() {
         startPoint,
         startPointHandle,
         stepCount,
-        name: getNameFromHue(hue),
+        name: swatchName,
       });
     }
   };
