@@ -13,7 +13,9 @@ function GenerateSwatchButton() {
     startPoint,
     startPointHandle,
     stepCount,
+    swatchEditingId,
     createSwatch,
+    updateSwatch,
   } = useColorPicker(
     useShallow((state) => {
       const {
@@ -23,7 +25,9 @@ function GenerateSwatchButton() {
         startPoint,
         startPointHandle,
         stepCount,
+        swatchEditingId,
         createSwatch,
+        updateSwatch,
       } = state;
 
       return {
@@ -33,28 +37,45 @@ function GenerateSwatchButton() {
         startPoint,
         startPointHandle,
         stepCount,
+        swatchEditingId,
         createSwatch,
+        updateSwatch,
       };
     }),
   );
 
-  const handleGenerateSwatch = () => {
-    createSwatch({
-      endPoint,
-      endPointHandle,
-      hue,
-      startPoint,
-      startPointHandle,
-      stepCount,
-      name: getNameFromHue(hue),
-    });
+  const handleOnClick = () => {
+    if (swatchEditingId) {
+      updateSwatch({
+        endPoint,
+        endPointHandle,
+        hue,
+        startPoint,
+        startPointHandle,
+        stepCount,
+        name: getNameFromHue(hue),
+        id: swatchEditingId,
+      });
+    } else {
+      createSwatch({
+        endPoint,
+        endPointHandle,
+        hue,
+        startPoint,
+        startPointHandle,
+        stepCount,
+        name: getNameFromHue(hue),
+      });
+    }
   };
+
+  const buttonText = swatchEditingId ? 'Update Swatch' : 'Generate Swatch';
 
   return (
     <div>
-      <Button className="flex gap-2" onClick={handleGenerateSwatch}>
+      <Button className="flex gap-2" onClick={handleOnClick}>
         <ColorsIcon width={16} height={16} />
-        Generate Color Swatch
+        {buttonText}
       </Button>
     </div>
   );
