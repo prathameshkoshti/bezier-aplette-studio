@@ -54,9 +54,9 @@ export const getNameFromHue = (hue: HueValue) => {
   if (hue >= 160 && hue < 175) return 'Teal';
   if (hue >= 175 && hue < 205) return 'Cyan';
   if (hue >= 205 && hue < 245) return 'Blue';
-  if (hue >= 245 && hue < 260) return 'Indigo';
-  if (hue >= 260 && hue < 275) return 'Purple';
-  if (hue >= 275 && hue < 315) return 'Magenta';
+  if (hue >= 245 && hue < 270) return 'Indigo';
+  if (hue >= 270 && hue < 285) return 'Purple';
+  if (hue >= 285 && hue < 315) return 'Magenta';
   if (hue >= 315 && hue < 345) return 'Pink';
 
   return 'Unknown';
