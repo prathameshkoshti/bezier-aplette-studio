@@ -8,7 +8,6 @@ function Edit({ stroke = '#000', height = 24, width = 24 }: IconProps) {
       height={height}
       viewBox="0 0 24 24"
       fill="none"
-      data-src="https://cdn.hugeicons.com/icons/edit-01-stroke-standard.svg"
       role="img"
       color="#000000"
     >

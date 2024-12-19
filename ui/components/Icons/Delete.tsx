@@ -8,7 +8,6 @@ function Trash({ width = 24, height = 24, stroke = '#000' }: IconProps) {
       height={height}
       viewBox="0 0 24 24"
       fill="none"
-      data-src="https://cdn.hugeicons.com/icons/delete-02-stroke-standard.svg"
       role="img"
       color="#000000"
     >

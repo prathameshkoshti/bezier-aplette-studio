@@ -2,7 +2,7 @@
 import { useShallow } from 'zustand/react/shallow';
 import { getNameFromHue } from '@utils';
 import Button from '@components/ui/button';
-import ColorsIcon from '@components/Icons/Colors';
+import PaintBucket from '@components/Icons/PaintBucket';
 import useColorPicker from '@store/colorPicker';
 
 function GenerateSwatchButton() {
@@ -74,7 +74,7 @@ function GenerateSwatchButton() {
   return (
     <div>
       <Button className="flex gap-2" onClick={handleOnClick}>
-        <ColorsIcon width={16} height={16} />
+        <PaintBucket width={16} height={16} />
         {buttonText}
       </Button>
     </div>
