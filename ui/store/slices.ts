@@ -19,7 +19,7 @@ export const createInputsSlice = (
   hue: 0,
   curveType: '',
   curveSubType: '',
-  stepCount: 3,
+  stepCount: 7,
   freeHandMode: true,
 
   // state update action
