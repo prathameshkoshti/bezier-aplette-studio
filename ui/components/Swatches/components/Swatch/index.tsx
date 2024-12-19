@@ -73,6 +73,7 @@ function Swatch({ deleteSwatch, loadSwatch, swatch, isEditing }: SwatchProps) {
                   variant="ghost"
                   className="px-2"
                   onClick={editColorSwatch}
+                  disabled={isEditing}
                 >
                   <EditIcon width={18} height={18} stroke="currentColor" />
                 </Button>
