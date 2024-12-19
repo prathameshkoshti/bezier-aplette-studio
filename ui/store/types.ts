@@ -8,6 +8,8 @@ export type InputsState = {
   curveType: CurveType | '';
   curveSubType: CurveSubType | '';
   freeHandMode: boolean;
+  swatchName: string;
+  autoGenerateSwatchName: boolean;
 };
 
 export type CoordinatesState = {
@@ -35,9 +37,13 @@ export type SwatchesState = {
 export type InputsAction = {
   updateHue: (hue: InputsState['hue']) => void;
   updateStepCount: (hue: InputsState['stepCount']) => void;
+  updateSwatchName: (hue: InputsState['swatchName']) => void;
   updateCurveType: (hue: InputsState['curveType']) => void;
   updateCurveSubType: (hue: InputsState['curveSubType']) => void;
   updateFreeHandMode: (freeHandMode: InputsState['freeHandMode']) => void;
+  updateAutoGenerateSwatchName: (
+    freeHandMode: InputsState['autoGenerateSwatchName'],
+  ) => void;
 };
 
 export type CoordinatesAction = {
@@ -59,7 +65,6 @@ export type SwatchesAction = {
   createSwatch: (swatch: Omit<Swatch, 'id'>) => void;
   updateSwatch: (swatch: Swatch) => void;
   deleteSwatch: (id: string) => void;
-  renameSwatch: (id: string, name: string) => void;
   loadSwatch: (id: string) => void;
   unloadSwatch: () => void;
 };

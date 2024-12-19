@@ -19,6 +19,8 @@ export const createInputsSlice = (
   hue: 0,
   curveType: '',
   curveSubType: '',
+  swatchName: '',
+  autoGenerateSwatchName: true,
   stepCount: 7,
   freeHandMode: true,
 
@@ -31,7 +33,12 @@ export const createInputsSlice = (
 
   updateStepCount: (stepCount) => set({ stepCount }),
 
+  updateSwatchName: (swatchName) => set({ swatchName }),
+
   updateFreeHandMode: (freeHandMode) => set({ freeHandMode }),
+
+  updateAutoGenerateSwatchName: (autoGenerateSwatchName) =>
+    set({ autoGenerateSwatchName }),
 });
 
 export const createCoordinatesSlice = (
@@ -140,12 +147,5 @@ export const createSwatchesSlice = (
 
   unloadSwatch: () => {
     set({ swatchEditingId: null });
-  },
-
-  renameSwatch: (id, name) => {
-    const { swatches } = get();
-    const index = swatches.findIndex((swatch) => swatch.id === id);
-    swatches[index].name = name;
-    set({ swatches });
   },
 });

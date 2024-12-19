@@ -16,6 +16,7 @@ function StepCount() {
   const handleStepCount: ChangeEventHandler<HTMLInputElement> = (event) => {
     updateStepCount(+event.currentTarget.value);
   };
+
   return (
     <div className="w-20 flex flex-col">
       <Label className="py-1.5 text-sm font-semibold" htmlFor="step-count">
