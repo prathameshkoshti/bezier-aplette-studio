@@ -1,4 +1,4 @@
-import { uuid } from '@utils';
+import { getNameFromHue, uuid } from '@utils';
 import type {
   CoordinatesAction,
   CoordinatesState,
@@ -101,6 +101,7 @@ export const createSwatchesSlice = (
     set({
       ...COORDINATES_DEFAULT_VALUES,
       ...INPUT_DEFAULT_VALUES,
+      swatchName: getNameFromHue(INPUT_DEFAULT_VALUES.hue),
       swatches,
       swatchEditingId: null,
     });
