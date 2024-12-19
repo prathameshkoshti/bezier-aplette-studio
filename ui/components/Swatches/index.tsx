@@ -1,10 +1,17 @@
+import { useShallow } from 'zustand/react/shallow';
 import useColorPicker from '@store/colorPicker';
 import { Accordion } from '@components/ui/accordion';
 import Swatch from './components/Swatch';
 
 function Swatches() {
   const { swatches, swatchEditingId, deleteSwatch, loadSwatch } =
-    useColorPicker();
+    useColorPicker(
+      useShallow((state) => {
+        // eslint-disable-next-line @typescript-eslint/no-shadow
+        const { swatches, swatchEditingId, deleteSwatch, loadSwatch } = state;
+        return { swatches, swatchEditingId, deleteSwatch, loadSwatch };
+      }),
+    );
 
   return (
     <div className="flex-1 py-4 mx-4 overflow-auto">

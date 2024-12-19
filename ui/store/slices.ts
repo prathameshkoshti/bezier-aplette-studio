@@ -1,4 +1,5 @@
 import { getNameFromHue, uuid } from '@utils';
+import cloneDeep from 'lodash/cloneDeep';
 import type {
   CoordinatesAction,
   CoordinatesState,
@@ -80,29 +81,34 @@ export const createSwatchesSlice = (
   swatchEditingId: null,
   createSwatch: (swatch) => {
     const { swatches } = get();
-    swatches.push({ ...swatch, id: uuid() });
-    set({ swatches });
+    const swatchesCopy = cloneDeep(swatches);
+    swatchesCopy.push({ ...swatch, id: uuid() });
+    set({ swatches: swatchesCopy });
   },
 
   updateSwatch: (swatch) => {
     const { swatches, swatchEditingId } = get();
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const index = swatches.findIndex((swatch) => swatch.id === swatchEditingId);
+    const swatchesCopy = cloneDeep(swatches);
+    const index = swatchesCopy.findIndex(
+      // eslint-disable-next-line @typescript-eslint/no-shadow
+      (swatch) => swatch.id === swatchEditingId,
+    );
     if (index >= 0) {
-      swatches[index] = swatch;
+      swatchesCopy[index] = swatch;
     }
-    set({ swatches });
+    set({ swatches: swatchesCopy });
   },
 
   deleteSwatch: (id) => {
     const { swatches } = get();
-    const index = swatches.findIndex((swatch) => swatch.id === id);
-    swatches.splice(index, 1);
+    const swatchesCopy = cloneDeep(swatches);
+    const index = swatchesCopy.findIndex((swatch) => swatch.id === id);
+    swatchesCopy.splice(index, 1);
     set({
       ...COORDINATES_DEFAULT_VALUES,
       ...INPUT_DEFAULT_VALUES,
       swatchName: getNameFromHue(INPUT_DEFAULT_VALUES.hue),
-      swatches,
+      swatches: swatchesCopy,
       swatchEditingId: null,
     });
   },
