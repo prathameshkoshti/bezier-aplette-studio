@@ -10,8 +10,6 @@ import { bezierFunctions, curvesTypes } from '@constants/curves';
 const colorPickerPadding =
   (COLOR_PICKER_CONTAINER_SIZE - COLOR_PICKER_SIZE) / 2;
 
-const containerHalfSize = COLOR_PICKER_CONTAINER_SIZE / 2;
-
 const getCurveFunction = (
   curveType: CurveType,
   curveSubType: CurveSubType | '',
@@ -35,14 +33,8 @@ export const getRelativePositionForHandles = (
   const curveHeight = Math.abs(startPoint.y - endPoint.y);
 
   // get relative position for start and end point coordinates
-  const x1RelativePosition =
-    startPoint.x -
-    colorPickerPadding -
-    (startPoint.x > containerHalfSize ? COLOR_PICKER_SIZE : 0);
-  const y1RelativePosition =
-    startPoint.y -
-    colorPickerPadding -
-    (startPoint.y > containerHalfSize ? COLOR_PICKER_SIZE : 0);
+  const x1RelativePosition = startPoint.x - colorPickerPadding;
+  const y1RelativePosition = startPoint.y - colorPickerPadding;
 
   const curveFunction = getCurveFunction(curveType, curveSubType);
 
