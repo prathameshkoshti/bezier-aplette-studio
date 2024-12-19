@@ -11,18 +11,13 @@ import type {
   SwatchesAction,
   SwatchesState,
 } from './types';
+import { COORDINATES_DEFAULT_VALUES, INPUT_DEFAULT_VALUES } from './constants';
 
 export const createInputsSlice = (
   set: SetFunction,
 ): InputsState & InputsAction => ({
   // initial state values
-  hue: 0,
-  curveType: '',
-  curveSubType: '',
-  swatchName: '',
-  autoGenerateSwatchName: true,
-  stepCount: 7,
-  freeHandMode: true,
+  ...INPUT_DEFAULT_VALUES,
 
   // state update action
   updateHue: (hue) => set({ hue }),
@@ -45,22 +40,7 @@ export const createCoordinatesSlice = (
   set: SetFunction,
 ): CoordinatesState & CoordinatesAction => ({
   // initial state values
-  startPoint: {
-    x: 95,
-    y: 95,
-  },
-  endPoint: {
-    x: 360,
-    y: 360,
-  },
-  startPointHandle: {
-    x: 360,
-    y: 95,
-  },
-  endPointHandle: {
-    x: 360,
-    y: 95,
-  },
+  ...COORDINATES_DEFAULT_VALUES,
 
   // state update action
   updateStartPoint: (startPoint) => set({ startPoint }),
@@ -118,7 +98,12 @@ export const createSwatchesSlice = (
     const { swatches } = get();
     const index = swatches.findIndex((swatch) => swatch.id === id);
     swatches.splice(index, 1);
-    set({ swatches });
+    set({
+      ...COORDINATES_DEFAULT_VALUES,
+      ...INPUT_DEFAULT_VALUES,
+      swatches,
+      swatchEditingId: null,
+    });
   },
 
   loadSwatch: (id) => {
