@@ -74,7 +74,7 @@ function GenerateSwatchButton() {
   return (
     <div>
       <Button className="flex gap-2" onClick={handleOnClick}>
-        <PaintBucket width={16} height={16} />
+        <PaintBucket width={16} height={16} fill="white" />
         {buttonText}
       </Button>
     </div>
