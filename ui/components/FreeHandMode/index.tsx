@@ -1,9 +1,9 @@
-import Checkbox from '@components/ui/checkbox';
-import { Label } from '@radix-ui/react-label';
+import Curve from '@components/Icons/Curve';
+import { ToggleGroup, ToggleGroupItem } from '@components/ui/toggle-group';
 import useColorPicker from '@store/colorPicker';
 import { useShallow } from 'zustand/react/shallow';
 
-function FreeHandModeCheckbox() {
+function FreeHandMode() {
   const { freeHandMode, updateFreeHandMode } = useColorPicker(
     useShallow((state) => {
       // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -18,16 +18,13 @@ function FreeHandModeCheckbox() {
 
   return (
     <div className="flex items-center justify-end gap-2 py-2">
-      <Checkbox
-        id="free-hand"
-        onClick={handleFreeHandMode}
-        checked={freeHandMode}
-      />
-      <Label className="cursor-pointer" htmlFor="free-hand">
-        Free Hand Mode
-      </Label>
+      <ToggleGroup type="single" onClick={handleFreeHandMode}>
+        <ToggleGroupItem value="freeHandMode" aria-label="Free Hand Mode">
+          <Curve />
+        </ToggleGroupItem>
+      </ToggleGroup>
     </div>
   );
 }
 
-export default FreeHandModeCheckbox;
+export default FreeHandMode;

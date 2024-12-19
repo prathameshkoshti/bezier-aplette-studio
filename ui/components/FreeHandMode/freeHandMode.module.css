@@ -1,0 +1,4 @@
+.toggleGroupItem[data-state='on'] {
+  background-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
