@@ -3,6 +3,7 @@ import StepCount from '@components/StepCount';
 import CurveTypeSelect from '@components/CurveType';
 import FreeHandModeCheckbox from '@components/FreeHandModeCheckbox';
 import GenerateSwatchButton from '@components/GenerateSwatchButton';
+import SwatchName from '@components/SwatchName';
 import styles from './colorPickerInput.module.css';
 
 function ColorPickerInput() {
@@ -14,6 +15,7 @@ function ColorPickerInput() {
         <StepCount />
         <CurveTypeSelect />
       </div>
+      <SwatchName />
       <GenerateSwatchButton />
     </div>
   );
