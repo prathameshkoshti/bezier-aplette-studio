@@ -66,7 +66,7 @@ function Swatch({ deleteSwatch, loadSwatch, swatch, isEditing }: SwatchProps) {
       <AccordionTrigger className="p-4">
         <div className="flex-1">{swatch.name}</div>
         <div className="mr-3 flex gap-2">
-          <TooltipProvider>
+          <TooltipProvider delayDuration={1}>
             <Tooltip>
               <TooltipTrigger>
                 <Button
@@ -81,7 +81,7 @@ function Swatch({ deleteSwatch, loadSwatch, swatch, isEditing }: SwatchProps) {
               <TooltipContent>Edit Swatch</TooltipContent>
             </Tooltip>
           </TooltipProvider>
-          <TooltipProvider>
+          <TooltipProvider delayDuration={1}>
             <Tooltip>
               <TooltipTrigger>
                 <Button
