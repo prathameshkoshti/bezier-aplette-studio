@@ -9,13 +9,13 @@ import styles from './colorPickerInput.module.css';
 function ColorPickerInput() {
   return (
     <div className={styles.swatchGenerator}>
-      <ColorPicker />
       <FreeHandModeCheckbox />
+      <ColorPicker />
+      <SwatchName />
       <div className="flex gap-4 mb-4">
         <StepCount />
         <CurveTypeSelect />
       </div>
-      <SwatchName />
       <GenerateSwatchButton />
     </div>
   );
