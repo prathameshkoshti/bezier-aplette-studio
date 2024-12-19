@@ -90,16 +90,27 @@ export const createSwatchesSlice = (
   get: GetFunction,
 ): SwatchesState & SwatchesAction => ({
   swatches: [],
+  swatchEditingId: null,
   createSwatch: (swatch) => {
     const { swatches } = get();
     swatches.push({ ...swatch, id: uuid() });
     set({ swatches });
   },
 
+  updateSwatch: (swatch) => {
+    const { swatches, swatchEditingId } = get();
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const index = swatches.findIndex((swatch) => swatch.id === swatchEditingId);
+    if (index >= 0) {
+      swatches[index] = swatch;
+    }
+    set({ swatches });
+  },
+
   deleteSwatch: (id) => {
     const { swatches } = get();
     const index = swatches.findIndex((swatch) => swatch.id === id);
-    swatches.slice(index, 1);
+    swatches.splice(index, 1);
     set({ swatches });
   },
 
@@ -122,8 +133,13 @@ export const createSwatchesSlice = (
         startPoint,
         startPointHandle,
         stepCount,
+        swatchEditingId: id,
       });
     }
+  },
+
+  unloadSwatch: () => {
+    set({ swatchEditingId: null });
   },
 
   renameSwatch: (id, name) => {

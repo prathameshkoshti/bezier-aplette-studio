@@ -29,6 +29,7 @@ export type PresetsState = {
 
 export type SwatchesState = {
   swatches: Swatches;
+  swatchEditingId: string | null;
 };
 
 export type InputsAction = {
@@ -56,9 +57,11 @@ export type PresetsAction = {
 
 export type SwatchesAction = {
   createSwatch: (swatch: Omit<Swatch, 'id'>) => void;
+  updateSwatch: (swatch: Swatch) => void;
   deleteSwatch: (id: string) => void;
   renameSwatch: (id: string, name: string) => void;
   loadSwatch: (id: string) => void;
+  unloadSwatch: () => void;
 };
 
 export type SetFunction = (
