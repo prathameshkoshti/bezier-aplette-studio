@@ -34,7 +34,7 @@ function Swatch({ deleteSwatch, loadSwatch, swatch, isEditing }: SwatchProps) {
   } = swatch;
 
   const swatchAccordionClasses = clsx(
-    'border border-slate-300 border-solid mb-4 rounded-lg overflow-hidden',
+    'border border-zinc-300 border-solid mb-4 rounded-lg overflow-hidden',
     isEditing ? 'border-violet-400' : '',
   );
 

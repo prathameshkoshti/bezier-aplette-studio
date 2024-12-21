@@ -1,7 +1,4 @@
 .swatchGenerator {
   background-color: var(--card);
-  border: 1px solid hsl(var(--border));
-  margin: 1rem;
-  padding: 1rem;
   width: calc(var(--color-picker-container-size) + 2rem);
 }

@@ -74,7 +74,7 @@ function GenerateSwatchButton() {
   const buttonText = swatchEditingId ? 'Update Swatch' : 'Generate Swatch';
 
   return (
-    <div>
+    <div className="flex justify-end">
       <Button className="flex gap-2" onClick={handleOnClick}>
         <PaintBucket width={16} height={16} fill="white" />
         {buttonText}

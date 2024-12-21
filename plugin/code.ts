@@ -11,7 +11,7 @@
 
 // This shows the HTML page in "ui.html".
 figma.showUI(__html__, {
-  height: 724,
+  height: 768,
   width: 991,
   themeColors: true,
 });

@@ -24,7 +24,7 @@ function FreeHandMode() {
   };
 
   return (
-    <div className="flex items-center justify-end gap-2 py-2">
+    <div className="flex items-center justify-end gap-2">
       <TooltipProvider delayDuration={1}>
         <Tooltip>
           <TooltipTrigger>

@@ -49,7 +49,7 @@ function SwatchName() {
   }, [autoGenerateSwatchName, hue, updateSwatchName]);
 
   return (
-    <div className="flex items-center gap-4 mb-4">
+    <div className="flex items-center gap-4">
       <div className="flex flex-col">
         <Label className="py-1.5 text-sm font-semibold" htmlFor="swatch-name">
           Name
@@ -70,7 +70,7 @@ function SwatchName() {
           checked={autoGenerateSwatchName}
         />
         <Label className="cursor-pointer" htmlFor="auto-generate-checkbox">
-          Auto Generate Name
+          Auto Generate
         </Label>
       </div>
     </div>

@@ -14,18 +14,20 @@ function Swatches() {
     );
 
   return (
-    <div className="flex-1 py-4 mx-4 overflow-auto">
-      <Accordion type="single" collapsible className="w-full">
-        {swatches.map((swatch) => (
-          <Swatch
-            key={swatch.id}
-            swatch={swatch}
-            deleteSwatch={deleteSwatch}
-            loadSwatch={loadSwatch}
-            isEditing={swatchEditingId === swatch.id}
-          />
-        ))}
-      </Accordion>
+    <div className="flex-1 my-4 p-4 mr-4 overflow-auto border border-solid border-zinc-200 rounded-lg">
+      <div className="accordion-container">
+        <Accordion type="single" collapsible className="w-full">
+          {swatches.map((swatch) => (
+            <Swatch
+              key={swatch.id}
+              swatch={swatch}
+              deleteSwatch={deleteSwatch}
+              loadSwatch={loadSwatch}
+              isEditing={swatchEditingId === swatch.id}
+            />
+          ))}
+        </Accordion>
+      </div>
     </div>
   );
 }
