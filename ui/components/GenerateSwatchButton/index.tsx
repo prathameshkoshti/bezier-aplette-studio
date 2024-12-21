@@ -4,7 +4,7 @@ import Button from '@components/ui/button';
 import PaintBucket from '@components/Icons/PaintBucket';
 import useColorPicker from '@store/colorPicker';
 
-function GenerateSwatchButton() {
+function GenerateSwatchButtons() {
   const {
     endPoint,
     endPointHandle,
@@ -16,6 +16,7 @@ function GenerateSwatchButton() {
     swatchName,
     createSwatch,
     updateSwatch,
+    unloadSwatch,
   } = useColorPicker(
     useShallow((state) => {
       const {
@@ -29,6 +30,7 @@ function GenerateSwatchButton() {
         swatchName,
         createSwatch,
         updateSwatch,
+        unloadSwatch,
       } = state;
 
       return {
@@ -42,11 +44,12 @@ function GenerateSwatchButton() {
         swatchName,
         createSwatch,
         updateSwatch,
+        unloadSwatch,
       };
     }),
   );
 
-  const handleOnClick = () => {
+  const handleOnGenerateClick = () => {
     if (swatchEditingId) {
       updateSwatch({
         endPoint,
@@ -74,8 +77,13 @@ function GenerateSwatchButton() {
   const buttonText = swatchEditingId ? 'Update Swatch' : 'Generate Swatch';
 
   return (
-    <div className="flex justify-end">
-      <Button className="flex gap-2" onClick={handleOnClick}>
+    <div className="flex justify-end gap-4">
+      {swatchEditingId ? (
+        <Button variant="ghost" onClick={unloadSwatch}>
+          Unload Swatch
+        </Button>
+      ) : null}
+      <Button className="flex gap-2" onClick={handleOnGenerateClick}>
         <PaintBucket width={16} height={16} fill="white" />
         {buttonText}
       </Button>
@@ -83,4 +91,4 @@ function GenerateSwatchButton() {
   );
 }
 
-export default GenerateSwatchButton;
+export default GenerateSwatchButtons;
