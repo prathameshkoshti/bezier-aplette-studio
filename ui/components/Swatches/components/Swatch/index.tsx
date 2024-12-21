@@ -89,7 +89,7 @@ function Swatch({ deleteSwatch, loadSwatch, swatch, isEditing }: SwatchProps) {
                   className="px-2"
                   onClick={deleteColorSwatch}
                 >
-                  <DeleteIcon width={18} height={18} stroke="currentColor" />
+                  <DeleteIcon width={18} height={18} />
                 </Button>
               </TooltipTrigger>
               <TooltipContent>Delete Swatch</TooltipContent>

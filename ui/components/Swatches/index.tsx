@@ -14,7 +14,7 @@ function Swatches() {
     );
 
   return (
-    <div className="flex-1 my-4 p-4 mr-4 overflow-auto border border-solid border-zinc-200 rounded-lg">
+    <div className="flex-1 p-4 overflow-auto border border-solid border-zinc-200 rounded-lg">
       <div className="accordion-container">
         <Accordion type="single" collapsible className="w-full">
           {swatches.map((swatch) => (
