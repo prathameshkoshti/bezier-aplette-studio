@@ -10,6 +10,7 @@ const alias = {
   '@components': resolve(__dirname, './ui/components'),
   '@store': resolve(__dirname, './ui/store'),
   '@constants': resolve(__dirname, './ui/constants'),
+  '@hooks': resolve(__dirname, './ui/hooks'),
   '@utils': resolve(__dirname, './ui/utils'),
 };
 

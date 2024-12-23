@@ -20,6 +20,7 @@
       "@appTypes/*": ["./types/*"],
       "@components/*": ["./components/*"],
       "@constants/*": ["./constants/*"],
+      "@hooks/*": ["./hooks/*"],
       "@store/*": ["./store/*"],
       "@utils/*": ["./utils/*"],
       "@utils": ["./utils"]

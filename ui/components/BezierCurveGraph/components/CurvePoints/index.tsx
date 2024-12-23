@@ -1,28 +1,12 @@
-import useColorPicker from '@store/colorPicker';
-import { Bezier } from 'bezier-js';
 import {
   MAX_BOUNDARY,
   MIN_BOUNDARY,
 } from '@components/BezierCurveGraph/constants';
+import useSwatches from '@hooks/useSwatches';
 import Point from '../Point';
 
 function CurvePoints() {
-  const {
-    hue,
-    startPoint,
-    endPoint,
-    startPointHandle,
-    endPointHandle,
-    stepCount,
-  } = useColorPicker();
-
-  const { x: x1, y: y1 } = startPoint;
-  const { x: x2, y: y2 } = endPoint;
-  const { x: cx1, y: cy1 } = startPointHandle;
-  const { x: cx2, y: cy2 } = endPointHandle;
-
-  const curve = new Bezier(x1, y1, cx1, cy1, cx2, cy2, x2, y2);
-  const swatches = curve.getLUT(stepCount - 1);
+  const { swatchesCoordinates: swatches, hue } = useSwatches();
 
   swatches.shift();
   swatches.pop();
