@@ -1,6 +1,7 @@
 import js_beautify from 'js-beautify';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { toast } from 'sonner';
 import {
   Tooltip,
   TooltipContent,
@@ -18,8 +19,10 @@ function CodeBlock({ code }: CodeBlockProps) {
     (async () => {
       try {
         await navigator.clipboard.writeText(formattedCode);
+        toast.success('Swatches copied to clipboard.');
       } catch (err) {
         console.error('Failed to copy: ', err);
+        toast.error('Uh oh! Text cannot be copied, try again later.');
       }
     })();
   };

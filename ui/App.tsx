@@ -1,6 +1,7 @@
 import ColorPickerInput from '@components/ColorPickerInput';
 import Swatches from '@components/Swatches';
 import Toolbar from '@components/Toolbar';
+import Toaster from '@components/ui/sonner';
 import './reset.css';
 import './App.css';
 
@@ -12,6 +13,7 @@ function App() {
         <Toolbar />
         <Swatches />
       </div>
+      <Toaster />
     </div>
   );
 }
