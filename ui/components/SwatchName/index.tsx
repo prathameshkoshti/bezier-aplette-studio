@@ -15,6 +15,7 @@ function SwatchName() {
     updateSwatchName,
     autoGenerateSwatchName,
     updateAutoGenerateSwatchName,
+    swatchEditingId,
   } = useColorPicker(
     useShallow((state) => {
       const {
@@ -24,6 +25,7 @@ function SwatchName() {
         updateSwatchName: updateSwatchNameState,
         autoGenerateSwatchName: autoGenerateSwatchNameState,
         updateAutoGenerateSwatchName: updateAutoGenerateSwatchNameState,
+        swatchEditingId: swatchEditingIdState,
       } = state;
       return {
         hue: hueState,
@@ -32,6 +34,7 @@ function SwatchName() {
         updateSwatchName: updateSwatchNameState,
         autoGenerateSwatchName: autoGenerateSwatchNameState,
         updateAutoGenerateSwatchName: updateAutoGenerateSwatchNameState,
+        swatchEditingId: swatchEditingIdState,
       };
     }),
   );
@@ -45,13 +48,26 @@ function SwatchName() {
   };
 
   useEffect(() => {
-    if (autoGenerateSwatchName) {
+    if (swatchEditingId) {
+      const editingSwatch = swatches.find(
+        (swatch) => swatch.id === swatchEditingId,
+      );
+      if (editingSwatch) {
+        updateSwatchName(editingSwatch.name);
+      }
+    } else if (autoGenerateSwatchName) {
       const name = getNameFromHue(hue);
       const swatchNames = swatches.map((swatch) => swatch.name);
       const newName = doesNameExistInArray(swatchNames, name);
       updateSwatchName(newName);
     }
-  }, [autoGenerateSwatchName, hue, swatches, updateSwatchName]);
+  }, [
+    autoGenerateSwatchName,
+    hue,
+    swatchEditingId,
+    swatches,
+    updateSwatchName,
+  ]);
 
   return (
     <div className="flex items-center gap-4">
