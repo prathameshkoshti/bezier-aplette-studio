@@ -1,8 +1,8 @@
 import { useShallow } from 'zustand/react/shallow';
-import Export from '@components/Icons/Export';
 import Button from '@components/ui/button';
 import useColorPicker from '@store/colorPicker';
 import TokensInfoModal from '@components/TokensInfoModal';
+import Colors from '@components/Icons/Colors';
 
 function Toolbar() {
   const { swatches } = useColorPicker(
@@ -18,8 +18,8 @@ function Toolbar() {
     <div className="border border-solid border-zinc-200 rounded-lg p-4 flex gap-4 justify-end">
       <TokensInfoModal atLeastOneSwatchCreated={atLeastOneSwatchCreated} />
       <Button className="flex gap-2" disabled={!atLeastOneSwatchCreated}>
-        <Export width={16} height={16} stroke="white" />
-        Export Swatches
+        <Colors width={16} height={16} stroke="white" />
+        Create Styles
       </Button>
     </div>
   );
