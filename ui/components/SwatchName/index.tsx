@@ -3,7 +3,7 @@ import type { ChangeEventHandler } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { Input } from '@components/ui/input';
 import { Label } from '@components/ui/label';
-import { getNameFromHue } from '@utils/index';
+import { doesNameExistInArray, getNameFromHue } from '@utils/index';
 import useColorPicker from '@store/colorPicker';
 import Checkbox from '@components/ui/checkbox';
 
@@ -11,6 +11,7 @@ function SwatchName() {
   const {
     hue,
     swatchName,
+    swatches,
     updateSwatchName,
     autoGenerateSwatchName,
     updateAutoGenerateSwatchName,
@@ -19,6 +20,7 @@ function SwatchName() {
       const {
         hue: hueState,
         swatchName: swatchNameState,
+        swatches: swatchesState,
         updateSwatchName: updateSwatchNameState,
         autoGenerateSwatchName: autoGenerateSwatchNameState,
         updateAutoGenerateSwatchName: updateAutoGenerateSwatchNameState,
@@ -26,6 +28,7 @@ function SwatchName() {
       return {
         hue: hueState,
         swatchName: swatchNameState,
+        swatches: swatchesState,
         updateSwatchName: updateSwatchNameState,
         autoGenerateSwatchName: autoGenerateSwatchNameState,
         updateAutoGenerateSwatchName: updateAutoGenerateSwatchNameState,
@@ -43,9 +46,12 @@ function SwatchName() {
 
   useEffect(() => {
     if (autoGenerateSwatchName) {
-      updateSwatchName(getNameFromHue(hue));
+      const name = getNameFromHue(hue);
+      const swatchNames = swatches.map((swatch) => swatch.name);
+      const newName = doesNameExistInArray(swatchNames, name);
+      updateSwatchName(newName);
     }
-  }, [autoGenerateSwatchName, hue, updateSwatchName]);
+  }, [autoGenerateSwatchName, hue, swatches, updateSwatchName]);
 
   return (
     <div className="flex items-center gap-4">

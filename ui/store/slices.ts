@@ -1,4 +1,4 @@
-import { getNameFromHue, uuid } from '@utils';
+import { doesNameExistInArray, getNameFromHue, uuid } from '@utils';
 import cloneDeep from 'lodash/cloneDeep';
 import type {
   CoordinatesAction,
@@ -104,10 +104,14 @@ export const createSwatchesSlice = (
     const swatchesCopy = cloneDeep(swatches);
     const index = swatchesCopy.findIndex((swatch) => swatch.id === id);
     swatchesCopy.splice(index, 1);
+
+    const swatchName = getNameFromHue(INPUT_DEFAULT_VALUES.hue);
+    const swatchNames = swatches.map((swatch) => swatch.name);
+    const newName = doesNameExistInArray(swatchNames, swatchName);
     set({
       ...COORDINATES_DEFAULT_VALUES,
       ...INPUT_DEFAULT_VALUES,
-      swatchName: getNameFromHue(INPUT_DEFAULT_VALUES.hue),
+      swatchName: newName,
       swatches: swatchesCopy,
       swatchEditingId: null,
     });
