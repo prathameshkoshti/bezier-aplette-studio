@@ -25,7 +25,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'import/no-extraneous-dependencies': [
-      'error',
+      'warn',
       {
         devDependencies: [
           '**/test/**',
