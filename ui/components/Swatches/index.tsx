@@ -7,9 +7,18 @@ function Swatches() {
   const { swatches, swatchEditingId, deleteSwatch, loadSwatch } =
     useColorPicker(
       useShallow((state) => {
-        // eslint-disable-next-line @typescript-eslint/no-shadow
-        const { swatches, swatchEditingId, deleteSwatch, loadSwatch } = state;
-        return { swatches, swatchEditingId, deleteSwatch, loadSwatch };
+        const {
+          swatches: swatchesState,
+          swatchEditingId: swatchEditingIdState,
+          deleteSwatch: deleteSwatchState,
+          loadSwatch: loadSwatchState,
+        } = state;
+        return {
+          swatches: swatchesState,
+          swatchEditingId: swatchEditingIdState,
+          deleteSwatch: deleteSwatchState,
+          loadSwatch: loadSwatchState,
+        };
       }),
     );
 

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 import { useEffect } from 'react';
 import type { ChangeEventHandler } from 'react';
 import { useShallow } from 'zustand/react/shallow';
@@ -18,18 +17,18 @@ function SwatchName() {
   } = useColorPicker(
     useShallow((state) => {
       const {
-        hue,
-        swatchName,
-        updateSwatchName,
-        autoGenerateSwatchName,
-        updateAutoGenerateSwatchName,
+        hue: hueState,
+        swatchName: swatchNameState,
+        updateSwatchName: updateSwatchNameState,
+        autoGenerateSwatchName: autoGenerateSwatchNameState,
+        updateAutoGenerateSwatchName: updateAutoGenerateSwatchNameState,
       } = state;
       return {
-        hue,
-        swatchName,
-        updateSwatchName,
-        autoGenerateSwatchName,
-        updateAutoGenerateSwatchName,
+        hue: hueState,
+        swatchName: swatchNameState,
+        updateSwatchName: updateSwatchNameState,
+        autoGenerateSwatchName: autoGenerateSwatchNameState,
+        updateAutoGenerateSwatchName: updateAutoGenerateSwatchNameState,
       };
     }),
   );

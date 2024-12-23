@@ -13,9 +13,14 @@ import styles from './freeHandMode.module.css';
 function FreeHandMode() {
   const { freeHandMode, updateFreeHandMode } = useColorPicker(
     useShallow((state) => {
-      // eslint-disable-next-line @typescript-eslint/no-shadow
-      const { freeHandMode, updateFreeHandMode } = state;
-      return { freeHandMode, updateFreeHandMode };
+      const {
+        freeHandMode: freeHandModeState,
+        updateFreeHandMode: updateFreeHandModeState,
+      } = state;
+      return {
+        freeHandMode: freeHandModeState,
+        updateFreeHandMode: updateFreeHandModeState,
+      };
     }),
   );
 

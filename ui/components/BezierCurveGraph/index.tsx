@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import type { EditableCoordsType, Point as PointType } from '@appTypes/coords';
@@ -27,29 +26,29 @@ function BezierCurveGraph() {
   } = useColorPicker(
     useShallow((state) => {
       const {
-        hue,
-        freeHandMode,
-        startPoint,
-        updateStartPoint,
-        endPoint,
-        updateEndPoint,
-        startPointHandle,
-        updateStartPointHandle,
-        endPointHandle,
-        updateEndPointHandle,
+        hue: hueState,
+        freeHandMode: freeHandModeState,
+        startPoint: startPointState,
+        updateStartPoint: updateStartPointState,
+        endPoint: endPointState,
+        updateEndPoint: updateEndPointState,
+        startPointHandle: startPointHandleState,
+        updateStartPointHandle: updateStartPointHandleState,
+        endPointHandle: endPointHandleState,
+        updateEndPointHandle: updateEndPointHandleState,
       } = state;
 
       return {
-        hue,
-        freeHandMode,
-        startPoint,
-        updateStartPoint,
-        endPoint,
-        updateEndPoint,
-        startPointHandle,
-        updateStartPointHandle,
-        endPointHandle,
-        updateEndPointHandle,
+        hue: hueState,
+        freeHandMode: freeHandModeState,
+        startPoint: startPointState,
+        updateStartPoint: updateStartPointState,
+        endPoint: endPointState,
+        updateEndPoint: updateEndPointState,
+        startPointHandle: startPointHandleState,
+        updateStartPointHandle: updateStartPointHandleState,
+        endPointHandle: endPointHandleState,
+        updateEndPointHandle: updateEndPointHandleState,
       };
     }),
   );

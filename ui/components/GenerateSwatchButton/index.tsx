@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 import { useShallow } from 'zustand/react/shallow';
 import Button from '@components/ui/button';
 import PaintBucket from '@components/Icons/PaintBucket';
@@ -20,31 +19,31 @@ function GenerateSwatchButtons() {
   } = useColorPicker(
     useShallow((state) => {
       const {
-        endPoint,
-        endPointHandle,
-        hue,
-        startPoint,
-        startPointHandle,
-        stepCount,
-        swatchEditingId,
-        swatchName,
-        createSwatch,
-        updateSwatch,
-        unloadSwatch,
+        endPoint: endPointState,
+        endPointHandle: endPointHandleState,
+        hue: hueState,
+        startPoint: startPointState,
+        startPointHandle: startPointHandleState,
+        stepCount: stepCountState,
+        swatchEditingId: swatchEditingIdState,
+        swatchName: swatchNameState,
+        createSwatch: createSwatchState,
+        updateSwatch: updateSwatchState,
+        unloadSwatch: unloadSwatchState,
       } = state;
 
       return {
-        endPoint,
-        endPointHandle,
-        hue,
-        startPoint,
-        startPointHandle,
-        stepCount,
-        swatchEditingId,
-        swatchName,
-        createSwatch,
-        updateSwatch,
-        unloadSwatch,
+        endPoint: endPointState,
+        endPointHandle: endPointHandleState,
+        hue: hueState,
+        startPoint: startPointState,
+        startPointHandle: startPointHandleState,
+        stepCount: stepCountState,
+        swatchEditingId: swatchEditingIdState,
+        swatchName: swatchNameState,
+        createSwatch: createSwatchState,
+        updateSwatch: updateSwatchState,
+        unloadSwatch: unloadSwatchState,
       };
     }),
   );

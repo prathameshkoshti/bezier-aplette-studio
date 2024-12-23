@@ -7,9 +7,14 @@ import useColorPicker from '@store/colorPicker';
 function StepCount() {
   const { stepCount, updateStepCount } = useColorPicker(
     useShallow((state) => {
-      // eslint-disable-next-line @typescript-eslint/no-shadow
-      const { stepCount, updateStepCount } = state;
-      return { stepCount, updateStepCount };
+      const {
+        stepCount: stepCountState,
+        updateStepCount: updateStepCountState,
+      } = state;
+      return {
+        stepCount: stepCountState,
+        updateStepCount: updateStepCountState,
+      };
     }),
   );
 

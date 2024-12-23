@@ -32,9 +32,18 @@ function ColorPicker() {
   const colorPickerRef = useRef<HTMLDivElement>(null);
   const { hue, updateHue } = useColorPicker(
     useShallow((state) => {
-      // eslint-disable-next-line @typescript-eslint/no-shadow
-      const { hue, updateHue, curveType, curveSubType } = state;
-      return { hue, updateHue, curveType, curveSubType };
+      const {
+        hue: hueState,
+        updateHue: updateState,
+        curveType: curveTypeState,
+        curveSubType: curveSubTypeState,
+      } = state;
+      return {
+        hue: hueState,
+        updateHue: updateState,
+        curveType: curveTypeState,
+        curveSubType: curveSubTypeState,
+      };
     }),
   );
 

@@ -1,15 +1,14 @@
-import CurlyBrackets from '@components/Icons/CurlyBrackets';
+import { useShallow } from 'zustand/react/shallow';
 import Export from '@components/Icons/Export';
 import Button from '@components/ui/button';
 import useColorPicker from '@store/colorPicker';
-import { useShallow } from 'zustand/react/shallow';
+import TokensInfoModal from '@components/TokensInfoModal';
 
 function Toolbar() {
   const { swatches } = useColorPicker(
     useShallow((state) => {
-      // eslint-disable-next-line @typescript-eslint/no-shadow
-      const { swatches } = state;
-      return { swatches };
+      const { swatches: swatchesState } = state;
+      return { swatches: swatchesState };
     }),
   );
 
@@ -17,14 +16,7 @@ function Toolbar() {
 
   return (
     <div className="border border-solid border-zinc-200 rounded-lg p-4 flex gap-4 justify-end">
-      <Button
-        variant="secondary"
-        className="flex gap-2"
-        disabled={!atLeastOneSwatchCreated}
-      >
-        <CurlyBrackets width={16} height={16} />
-        Tokens
-      </Button>
+      <TokensInfoModal atLeastOneSwatchCreated={atLeastOneSwatchCreated} />
       <Button className="flex gap-2" disabled={!atLeastOneSwatchCreated}>
         <Export width={16} height={16} stroke="white" />
         Export Swatches

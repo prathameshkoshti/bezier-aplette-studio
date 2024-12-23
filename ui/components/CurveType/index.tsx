@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 import { useEffect } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import {
@@ -28,26 +27,26 @@ function CurveType() {
   } = useColorPicker(
     useShallow((state) => {
       const {
-        freeHandMode,
-        curveType,
-        updateCurveType,
-        curveSubType,
-        updateCurveSubType,
-        startPoint,
-        endPoint,
-        updateStartPointHandle,
-        updateEndPointHandle,
+        freeHandMode: freeHandModeState,
+        curveType: curveTypeState,
+        updateCurveType: updateCurveTypeState,
+        curveSubType: curveSubTypeState,
+        updateCurveSubType: updateCurveSubTypeState,
+        startPoint: startPointState,
+        endPoint: endPointState,
+        updateStartPointHandle: updateStartPointHandleState,
+        updateEndPointHandle: updateEndPointHandleState,
       } = state;
       return {
-        freeHandMode,
-        curveType,
-        updateCurveType,
-        curveSubType,
-        updateCurveSubType,
-        startPoint,
-        endPoint,
-        updateStartPointHandle,
-        updateEndPointHandle,
+        freeHandMode: freeHandModeState,
+        curveType: curveTypeState,
+        updateCurveType: updateCurveTypeState,
+        curveSubType: curveSubTypeState,
+        updateCurveSubType: updateCurveSubTypeState,
+        startPoint: startPointState,
+        endPoint: endPointState,
+        updateStartPointHandle: updateStartPointHandleState,
+        updateEndPointHandle: updateEndPointHandleState,
       };
     }),
   );
