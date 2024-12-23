@@ -90,3 +90,8 @@
   background: linear-gradient(to bottom, transparent 0%, #000 100%);
   z-index: 2;
 }
+
+.__json-pretty__ {
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
