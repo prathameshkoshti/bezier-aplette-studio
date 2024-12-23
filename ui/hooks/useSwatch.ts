@@ -38,9 +38,9 @@ const useSwatches = () => {
   const { x: cx2, y: cy2 } = endPointHandle;
 
   const curve = new Bezier(x1, y1, cx1, cy1, cx2, cy2, x2, y2);
-  const swatchesCoordinates = curve.getLUT(stepCount - 1);
+  const swatchCoordinates = curve.getLUT(stepCount - 1);
 
-  return { swatchesCoordinates, hue };
+  return { swatchCoordinates, hue };
 };
 
 export default useSwatches;

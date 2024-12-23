@@ -2,18 +2,18 @@ import {
   MAX_BOUNDARY,
   MIN_BOUNDARY,
 } from '@components/BezierCurveGraph/constants';
-import useSwatches from '@hooks/useSwatches';
+import useSwatches from '@hooks/useSwatch';
 import Point from '../Point';
 
 function CurvePoints() {
-  const { swatchesCoordinates: swatches, hue } = useSwatches();
+  const { swatchCoordinates: swatch, hue } = useSwatches();
 
-  swatches.shift();
-  swatches.pop();
+  swatch.shift();
+  swatch.pop();
 
   return (
     <g>
-      {swatches.map((color) => (
+      {swatch.map((color) => (
         <Point
           key={`${color.x},${color.y}`}
           hue={hue}
