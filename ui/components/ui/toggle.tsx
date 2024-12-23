@@ -1,5 +1,4 @@
 /* eslint-disable react-refresh/only-export-components */
-/* eslint-disable import/no-extraneous-dependencies */
 
 'use client';
 

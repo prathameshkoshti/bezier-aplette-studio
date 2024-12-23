@@ -1,5 +1,4 @@
 import * as React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { cn } from '@utils';
 import { Cross2Icon } from '@radix-ui/react-icons';
