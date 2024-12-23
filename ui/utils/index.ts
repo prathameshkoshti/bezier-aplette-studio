@@ -109,3 +109,17 @@ export const getNameFromHue = (hue: HueValue) => {
 
   return 'Unknown';
 };
+
+export const doesNameExistInArray = (
+  names: string[],
+  name: string,
+  counter?: number,
+): string => {
+  const nameToFind = counter ? `${name} ${counter}` : name;
+  const index = names.indexOf(nameToFind);
+  const newCounter = counter ?? 1;
+  if (index >= 0) {
+    return doesNameExistInArray(names, name, newCounter + 1);
+  }
+  return nameToFind;
+};
