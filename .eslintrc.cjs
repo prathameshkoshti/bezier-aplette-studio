@@ -38,6 +38,7 @@ module.exports = {
     // https://eslint.org/docs/latest/rules/no-console
     // The below two rules will make sure we do not use console(log|warn|trace) anywhere in our code
     'no-console': 'off',
+    'no-restricted-globals': 'off',
     'no-restricted-syntax': [
       'error',
       {
