@@ -1,10 +1,5 @@
 import clsx from 'clsx';
 import type { MouseEventHandler } from 'react';
-import { Bezier } from 'bezier-js';
-import {
-  MAX_BOUNDARY,
-  MIN_BOUNDARY,
-} from '@components/BezierCurveGraph/constants';
 import {
   AccordionContent,
   AccordionItem,
@@ -16,40 +11,21 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@components/ui/tooltip';
-import { getColorForCoordinates } from '@utils';
+import { getColorsFromCoordinates } from '@utils';
 import Button from '@components/ui/button';
 import EditIcon from '@components/Icons/Edit';
 import DeleteIcon from '@components/Icons/Delete';
 import type { SwatchProps } from './types';
 
 function Swatch({ deleteSwatch, loadSwatch, swatch, isEditing }: SwatchProps) {
-  const {
-    id,
-    hue,
-    startPoint,
-    endPoint,
-    startPointHandle,
-    endPointHandle,
-    stepCount,
-  } = swatch;
+  const { id } = swatch;
 
   const swatchAccordionClasses = clsx(
     'border border-zinc-300 border-solid mb-4 rounded-lg overflow-hidden',
     isEditing ? 'border-violet-400' : '',
   );
 
-  const { x: x1, y: y1 } = startPoint;
-  const { x: x2, y: y2 } = endPoint;
-  const { x: cx1, y: cy1 } = startPointHandle;
-  const { x: cx2, y: cy2 } = endPointHandle;
-
-  const curve = new Bezier(x1, y1, cx1, cy1, cx2, cy2, x2, y2);
-  const colorsCords = curve.getLUT(stepCount - 1);
-
-  const colors = colorsCords.map((colorCord) => {
-    const { x, y } = colorCord;
-    return getColorForCoordinates(hue, { x, y }, MIN_BOUNDARY, MAX_BOUNDARY);
-  });
+  const colors = getColorsFromCoordinates(swatch);
 
   const editColorSwatch: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();

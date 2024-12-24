@@ -1,5 +1,4 @@
-import { useShallow } from 'zustand/react/shallow';
-import { getSwatchData } from '@utils/index';
+import { getTokensData } from '@utils/index';
 import {
   Dialog,
   DialogContent,
@@ -10,18 +9,13 @@ import {
 import Button from '@components/ui/button';
 import CurlyBrackets from '@components/Icons/CurlyBrackets';
 import CodeBlock from '@components/CodeBlock';
-import useColorPicker from '@store/colorPicker';
 import type { TokensInfoModalProps } from './type';
 
-function TokensInfoModal({ atLeastOneSwatchCreated }: TokensInfoModalProps) {
-  const { swatches } = useColorPicker(
-    useShallow((state) => {
-      const { swatches: swatchesState } = state;
-      return { swatches: swatchesState };
-    }),
-  );
-
-  const swatchData = JSON.stringify(getSwatchData(swatches));
+function TokensInfoModal({
+  atLeastOneSwatchCreated,
+  swatches,
+}: TokensInfoModalProps) {
+  const swatchData = JSON.stringify(getTokensData(swatches));
 
   return (
     <Dialog>
