@@ -14,7 +14,7 @@ type Range<F extends number, T extends number> = Exclude<
 
 export type HueValue = Range<0, 361>;
 
-export type ColorData = {
+type ColorData = {
   hex: string;
   rgb: RGB;
   colorCodeName: string;

@@ -2,7 +2,7 @@ import {
   MAX_BOUNDARY,
   MIN_BOUNDARY,
 } from '@components/BezierCurveGraph/constants';
-import useSwatches from '@hooks/useSwatch';
+import useSwatches from '@hooks/useSwatches';
 import Point from '../Point';
 
 function CurvePoints() {

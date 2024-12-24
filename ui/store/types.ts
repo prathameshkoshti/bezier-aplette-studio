@@ -19,10 +19,10 @@ export type CoordinatesState = {
   endPointHandle: Point;
 };
 
-export type Preset = Pick<InputsState, 'stepCount' | 'hue'> &
+type Preset = Pick<InputsState, 'stepCount' | 'hue'> &
   CoordinatesState & { id: string };
 export type Swatch = Preset & { name: string };
-export type Presets = Preset[];
+type Presets = Preset[];
 export type Swatches = Swatch[];
 
 export type PresetsState = {

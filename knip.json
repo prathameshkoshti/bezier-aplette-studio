@@ -5,6 +5,7 @@
     "@appTypes/*": ["./ui/types/*"],
     "@components/*": ["./ui/components/*"],
     "@constants/*": ["./ui/constants/*"],
+    "@hooks/*": ["./ui/hooks/*"],
     "@store/*": ["./ui/store/*"],
     "@utils/*": ["./ui/utils/*"],
     "@utils": ["./ui/utils"]
