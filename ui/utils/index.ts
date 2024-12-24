@@ -4,9 +4,9 @@ import { clsx } from 'clsx';
 import { Bezier } from 'bezier-js';
 import { twMerge } from 'tailwind-merge';
 import convertColor from 'color-convert';
-import type { HueValue } from '@appTypes/color';
+import type { HueValue, SwatchData } from '@appTypes/color';
 import type { Point } from '@appTypes/coords';
-import type { Swatch } from '@store/types';
+import type { Swatch, Swatches } from '@store/types';
 import {
   MAX_BOUNDARY,
   MIN_BOUNDARY,
@@ -46,35 +46,55 @@ export function getColorForCoordinates(
   return `#${newColor}`;
 }
 
-export const getSwatchData = (swatches: Swatch[]) => {
+export const getColorsFromCoordinates = (swatch: Swatch) => {
+  const {
+    hue,
+    startPoint,
+    endPoint,
+    startPointHandle,
+    endPointHandle,
+    stepCount,
+  } = swatch;
+
+  const { x: x1, y: y1 } = startPoint;
+  const { x: x2, y: y2 } = endPoint;
+  const { x: cx1, y: cy1 } = startPointHandle;
+  const { x: cx2, y: cy2 } = endPointHandle;
+
+  const curve = new Bezier(x1, y1, cx1, cy1, cx2, cy2, x2, y2);
+  const colorsCords = curve.getLUT(stepCount - 1);
+
+  return colorsCords.map((colorCord) => {
+    const { x, y } = colorCord;
+    return getColorForCoordinates(hue, { x, y }, MIN_BOUNDARY, MAX_BOUNDARY);
+  });
+};
+
+export const getSwatchData = (swatches: Swatches): SwatchData[] =>
+  swatches.map((swatch) => {
+    const { name, id } = swatch;
+    const swatchName = camelCase(name);
+    const colors = getColorsFromCoordinates(swatch);
+    return {
+      id,
+      name,
+      swatchCodeName: swatchName,
+      colors: colors.map((color, index) => ({
+        hex: color,
+        rgb: convertColor.hex.rgb(color),
+        colorCodeName: `${(index + 1) * 100}`,
+      })),
+    };
+  });
+
+export const getTokensData = (swatches: Swatches) => {
   const swatchData: Record<string, Record<string, string>> = {};
 
   for (const swatch of swatches) {
-    const {
-      hue,
-      name,
-      startPoint,
-      endPoint,
-      startPointHandle,
-      endPointHandle,
-      stepCount,
-    } = swatch;
-
-    const { x: x1, y: y1 } = startPoint;
-    const { x: x2, y: y2 } = endPoint;
-    const { x: cx1, y: cy1 } = startPointHandle;
-    const { x: cx2, y: cy2 } = endPointHandle;
-
+    const { name } = swatch;
     const swatchName = camelCase(name);
 
-    const curve = new Bezier(x1, y1, cx1, cy1, cx2, cy2, x2, y2);
-    const colorsCords = curve.getLUT(stepCount - 1);
-
-    const colors = colorsCords.map((colorCord) => {
-      const { x, y } = colorCord;
-      return getColorForCoordinates(hue, { x, y }, MIN_BOUNDARY, MAX_BOUNDARY);
-    });
-
+    const colors = getColorsFromCoordinates(swatch);
     swatchData[swatchName] = colors.reduce(
       (acc, color, index) => {
         acc[(index + 1) * 100] = color;
