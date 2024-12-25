@@ -19,8 +19,8 @@ function Point({
   isNonControlPoint,
 }: PointProps) {
   const pointClasses = clsx(styles.point, {
-    [styles.nonControlPoint]: isNonControlPoint
-  })
+    [styles.nonControlPoint]: isNonControlPoint,
+  });
 
   const [color, setColor] = useState('transparent');
   const { x: maxX, y: maxY } = maxBoundary ?? { x: 0, y: 0 };
@@ -93,7 +93,7 @@ function Point({
             cy={y}
             r="5"
             fill={color}
-            strokeWidth="3"
+            strokeWidth={isNonControlPoint ? 1 : 2.5}
             stroke="white"
             strokeLinecap="round"
           />
