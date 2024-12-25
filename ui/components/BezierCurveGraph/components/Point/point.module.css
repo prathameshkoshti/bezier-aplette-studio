@@ -11,3 +11,7 @@
 .point.nonControlPoint {
   cursor: initial;
 }
+
+.point.disabledHandlePoint {
+  cursor: not-allowed;
+}

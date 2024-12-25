@@ -137,7 +137,7 @@ function BezierCurveGraph() {
       <Point
         x={startPointHandle.x}
         y={startPointHandle.y}
-        disabled={freeHandMode}
+        disabled={!freeHandMode}
         type="startPointHandle"
         parentCoords={elementPosition}
         handlePointCoords={handlePointCoords}
@@ -147,7 +147,7 @@ function BezierCurveGraph() {
       <Point
         x={endPointHandle.x}
         y={endPointHandle.y}
-        disabled={freeHandMode}
+        disabled={!freeHandMode}
         type="endPointHandle"
         parentCoords={elementPosition}
         handlePointCoords={handlePointCoords}

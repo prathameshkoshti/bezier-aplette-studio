@@ -20,6 +20,7 @@ function Point({
 }: PointProps) {
   const pointClasses = clsx(styles.point, {
     [styles.nonControlPoint]: isNonControlPoint,
+    [styles.disabledHandlePoint]: disabled,
   });
 
   const [color, setColor] = useState('transparent');
@@ -30,7 +31,7 @@ function Point({
     if (
       parentCoords &&
       handlePointCoords &&
-      ((typeof disabled === 'boolean' && disabled) ||
+      ((typeof disabled === 'boolean' && !disabled) ||
         typeof disabled === 'undefined')
     ) {
       const { x: parentX, y: parentY } = parentCoords;
@@ -104,7 +105,7 @@ function Point({
           y={y - 4}
           width={8}
           height={8}
-          fill="white"
+          fill={disabled ? 'lightgrey' : 'white'}
           strokeWidth="1"
           stroke="grey"
           strokeLinecap="round"
