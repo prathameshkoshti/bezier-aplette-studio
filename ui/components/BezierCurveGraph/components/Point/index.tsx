@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import type { MouseEventHandler } from 'react';
 import type { EditableCoordsType } from '@appTypes/coords';
@@ -15,7 +16,12 @@ function Point({
   parentCoords,
   handlePointCoords,
   disabled,
+  isNonControlPoint,
 }: PointProps) {
+  const pointClasses = clsx(styles.point, {
+    [styles.nonControlPoint]: isNonControlPoint
+  })
+
   const [color, setColor] = useState('transparent');
   const { x: maxX, y: maxY } = maxBoundary ?? { x: 0, y: 0 };
   const { x: minX, y: minY } = minBoundary ?? { x: 0, y: 0 };
@@ -70,7 +76,7 @@ function Point({
   }, [hue, isHandle, maxBoundary, minBoundary, x, y]);
 
   return (
-    <g className={styles.point} onMouseDown={handleMouseDown}>
+    <g className={pointClasses} onMouseDown={handleMouseDown}>
       {!isHandle ? (
         <>
           <circle

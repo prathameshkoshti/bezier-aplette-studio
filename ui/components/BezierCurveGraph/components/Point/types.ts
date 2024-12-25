@@ -16,4 +16,5 @@ export type PointProps = {
   minBoundary?: Coords;
   parentCoords?: Coords;
   disabled?: boolean;
+  isNonControlPoint?: boolean;
 };

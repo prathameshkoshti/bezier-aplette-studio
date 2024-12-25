@@ -7,3 +7,7 @@
   left: -4px;
   top: -4px;
 }
+
+.point.nonControlPoint {
+  cursor: initial;
+}

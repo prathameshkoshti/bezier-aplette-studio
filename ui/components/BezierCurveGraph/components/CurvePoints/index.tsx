@@ -22,6 +22,7 @@ function CurvePoints() {
           y={color.y}
           minBoundary={MIN_BOUNDARY}
           maxBoundary={MAX_BOUNDARY}
+          isNonControlPoint
         />
       ))}
     </g>
