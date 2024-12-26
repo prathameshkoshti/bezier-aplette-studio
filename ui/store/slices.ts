@@ -99,6 +99,18 @@ export const createSwatchesSlice = (
     set({ swatches: swatchesCopy });
   },
 
+  duplicateSwatch: (id: string) => {
+    const { swatches } = get();
+    const swatch = swatches.find((s) => s.id === id);
+    if (swatch) {
+      const { id: swatchId, name, ...restSwatchData } = swatch;
+      const swatchName = `${name} Copy`;
+      const swatchesCopy = cloneDeep(swatches);
+      swatchesCopy.push({ ...restSwatchData, name: swatchName, id: uuid() });
+      set({ swatches: swatchesCopy });
+    }
+  },
+
   deleteSwatch: (id) => {
     const { swatches } = get();
     const swatchesCopy = cloneDeep(swatches);

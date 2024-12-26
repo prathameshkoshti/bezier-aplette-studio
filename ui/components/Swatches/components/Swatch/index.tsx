@@ -13,11 +13,18 @@ import {
 } from '@components/ui/tooltip';
 import { getColorsFromCoordinates } from '@utils';
 import Button from '@components/ui/button';
+import CopyIcon from '@components/Icons/Copy';
 import EditIcon from '@components/Icons/Edit';
 import DeleteIcon from '@components/Icons/Delete';
 import type { SwatchProps } from './types';
 
-function Swatch({ deleteSwatch, loadSwatch, swatch, isEditing }: SwatchProps) {
+function Swatch({
+  deleteSwatch,
+  loadSwatch,
+  duplicateSwatch,
+  swatch,
+  isEditing,
+}: SwatchProps) {
   const { id } = swatch;
 
   const swatchAccordionClasses = clsx(
@@ -37,11 +44,32 @@ function Swatch({ deleteSwatch, loadSwatch, swatch, isEditing }: SwatchProps) {
     deleteSwatch(id);
   };
 
+  const duplicateColorSwatch: MouseEventHandler<HTMLButtonElement> = (
+    event,
+  ) => {
+    event.stopPropagation();
+    duplicateSwatch(id);
+  };
+
   return (
     <AccordionItem value={swatch.id} className={swatchAccordionClasses}>
       <AccordionTrigger className="p-4">
         <div className="flex-1">{swatch.name}</div>
         <div className="mr-3 flex gap-2">
+          <TooltipProvider delayDuration={1}>
+            <Tooltip>
+              <TooltipTrigger>
+                <Button
+                  variant="ghost"
+                  className="px-2"
+                  onClick={duplicateColorSwatch}
+                >
+                  <CopyIcon width={18} height={18} stroke="currentColor" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Duplicate Swatch</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           <TooltipProvider delayDuration={1}>
             <Tooltip>
               <TooltipTrigger>

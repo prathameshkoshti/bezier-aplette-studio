@@ -5,4 +5,5 @@ export type SwatchProps = {
   isEditing: boolean;
   loadSwatch: (id: string) => void;
   deleteSwatch: (id: string) => void;
+  duplicateSwatch: (id: string) => void;
 };

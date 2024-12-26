@@ -64,6 +64,7 @@ export type PresetsAction = {
 export type SwatchesAction = {
   createSwatch: (swatch: Omit<Swatch, 'id'>) => void;
   updateSwatch: (swatch: Swatch) => void;
+  duplicateSwatch: (id: string) => void;
   deleteSwatch: (id: string) => void;
   loadSwatch: (id: string) => void;
   unloadSwatch: () => void;
