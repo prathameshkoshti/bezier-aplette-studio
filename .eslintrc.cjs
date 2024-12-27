@@ -16,6 +16,7 @@ module.exports = {
     // Keeping this last in extends so that, it turn off all rules that conflict with Prettier
     'prettier',
   ],
+  parser: '@typescript-eslint/parser',
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   plugins: ['react-refresh'],
   rules: {
