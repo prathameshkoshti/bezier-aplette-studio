@@ -1,12 +1,13 @@
-type ColorData = {
+export type ColorData = {
   hex: string;
   rgb: RGB;
-  colorCodeName: string;
+  token: string;
+  name: string;
 };
 
 export type SwatchData = {
   id: string;
   name: string;
-  swatchCodeName: string;
+  token: string;
   colors: ColorData[];
 };

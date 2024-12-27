@@ -78,11 +78,12 @@ export const getSwatchData = (swatches: Swatches): SwatchData[] =>
     return {
       id,
       name,
-      swatchCodeName: swatchName,
+      token: swatchName,
       colors: colors.map((color, index) => ({
         hex: color,
         rgb: convertColor.hex.rgb(color),
-        colorCodeName: `${(index + 1) * 100}`,
+        name: `${(index + 1) * 100}`,
+        token: `${swatchName}.${(index + 1) * 100}`,
       })),
     };
   });

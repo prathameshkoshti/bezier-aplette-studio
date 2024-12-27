@@ -20,7 +20,7 @@ const createStyles = (swatches: SwatchData[]) => {
       for (const swatch of swatches) {
         const groupName = swatch.name;
         for (const color of swatch.colors) {
-          const styleName = `${groupName}/${color.colorCodeName}`;
+          const styleName = `${groupName}/${color.name}`;
           const [r, g, b] = color.rgb as unknown as number[];
           const style = figma.createPaintStyle();
           style.name = styleName;
