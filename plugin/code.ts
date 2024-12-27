@@ -10,6 +10,11 @@ import type { SwatchData } from './types';
 // You can access browser APIs in the <script> tag inside "ui.html" which has a
 // full browser environment (See https://www.figma.com/plugin-docs/how-plugins-run).
 
+// Load commonly used fonts when plugin starts
+(async () => {
+  await preloadFonts();
+})();
+
 const createStyles = (swatches: SwatchData[]) => {
   (async () => {
     try {
@@ -24,12 +29,7 @@ const createStyles = (swatches: SwatchData[]) => {
           const [r, g, b] = color.rgb as unknown as number[];
           const style = figma.createPaintStyle();
           style.name = styleName;
-          style.paints = [
-            {
-              type: 'SOLID',
-              color: { r: r / 255, g: g / 255, b: b / 255 },
-            },
-          ];
+          style.paints = getFillColor(r, g, b);
         }
       }
     } catch (error) {
