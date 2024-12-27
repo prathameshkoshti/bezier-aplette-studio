@@ -4,6 +4,14 @@
 // This plugin will open a window to prompt the user to enter a number, and
 // it will then create that many rectangles on the screen.
 import type { SwatchData } from './types';
+import { BORDER_RADIUS } from './constants';
+import {
+  createAutoLayout,
+  createColorNode,
+  createTextNode,
+  getFillColor,
+  preloadFonts,
+} from './utils';
 
 // This file holds the main code for plugins. Code in this file has access to
 // the *figma document* via the figma global object.
@@ -33,17 +41,48 @@ const createStyles = (swatches: SwatchData[]) => {
         }
       }
     } catch (error) {
-      console.error('Error in creating style:', error);
+      console.error('Error in exporting styles:', error);
+      figma.notify('Error occurred while exporting files!', { error: true });
     }
   })();
 };
 
-// const createPalette = async (swatches: SwatchData[]) => {
-//   try {
-//   } catch (error) {
-//     console.error('Error in creating style:', error);
-//   }
-// };
+const createPalette = (swatches: SwatchData[]) => {
+  try {
+    const nodes: SceneNode[] = [];
+
+    for (const swatch of swatches) {
+      // create frame
+      const frame = createAutoLayout(50, 20, 'VERTICAL');
+      frame.x = 0;
+      frame.y = 0;
+      figma.currentPage.appendChild(frame);
+      frame.cornerRadius = BORDER_RADIUS;
+
+      // create frame header
+      const headerText = createTextNode(swatch.name, 24);
+
+      // create swatch group frame
+      const swatchFrameGroup = createAutoLayout(0, 0, 'VERTICAL');
+      swatchFrameGroup.name = `${swatch.name} Swatch`;
+      swatchFrameGroup.cornerRadius = BORDER_RADIUS;
+
+      for (const color of swatch.colors) {
+        const rect = createColorNode(color, swatch.token);
+        swatchFrameGroup.appendChild(rect);
+      }
+      frame.name = swatch.name;
+      frame.appendChild(headerText);
+      frame.appendChild(swatchFrameGroup);
+      // nodes.push(frame);
+      // figma.currentPage.selection = nodes;
+    }
+    figma.viewport.scrollAndZoomIntoView(nodes);
+  } catch (error) {
+    console.error('Error while creating palette:', error);
+    figma.notify('Error occurred while creating palette!', { error: true });
+  }
+};
 
 // This shows the HTML page in "ui.html".
 figma.showUI(__html__, {
@@ -64,20 +103,11 @@ figma.ui.onmessage = (msg: { type: string; colors: SwatchData[] }) => {
       break;
     }
     case 'export-color-palette': {
+      createPalette(msg.colors);
       break;
     }
     default: {
       break;
     }
   }
-  // const nodes: SceneNode[] = [];
-  // const frame = figma.createFrame();
-  // frame.x = 0;
-  // frame.y = 0;
-
-  // // frame.fills = [{ type: 'SOLID', color: msg.color }];
-  // figma.currentPage.appendChild(frame);
-  // nodes.push(frame);
-  // figma.currentPage.selection = nodes;
-  // figma.viewport.scrollAndZoomIntoView(nodes);
 };
