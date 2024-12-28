@@ -12,6 +12,11 @@ type Range<F extends number, T extends number> = Exclude<
   Enumerate<F>
 >;
 
+type ContrastInfo = {
+  ratio: number;
+  score: string;
+};
+
 export type HueValue = Range<0, 361>;
 
 type ColorData = {
@@ -19,6 +24,10 @@ type ColorData = {
   rgb: RGB;
   token: string;
   name: string;
+  contrast: {
+    white: ContrastInfo;
+    black: ContrastInfo;
+  };
 };
 
 export type SwatchData = {

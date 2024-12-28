@@ -74,8 +74,6 @@ const createPalette = (swatches: SwatchData[]) => {
       frame.name = swatch.name;
       frame.appendChild(headerText);
       frame.appendChild(swatchFrameGroup);
-      // nodes.push(frame);
-      // figma.currentPage.selection = nodes;
     }
     figma.viewport.scrollAndZoomIntoView(nodes);
   } catch (error) {

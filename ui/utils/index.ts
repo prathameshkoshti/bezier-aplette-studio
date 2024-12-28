@@ -1,5 +1,6 @@
 import camelCase from 'camelcase';
 import type { ClassValue } from 'clsx';
+import { hex, score } from 'wcag-contrast';
 import { clsx } from 'clsx';
 import { Bezier } from 'bezier-js';
 import { twMerge } from 'tailwind-merge';
@@ -79,12 +80,26 @@ export const getSwatchData = (swatches: Swatches): SwatchData[] =>
       id,
       name,
       token: swatchName,
-      colors: colors.map((color, index) => ({
-        hex: color,
-        rgb: convertColor.hex.rgb(color),
-        name: `${(index + 1) * 100}`,
-        token: `${swatchName}.${(index + 1) * 100}`,
-      })),
+      colors: colors.map((color, index) => {
+        const blackTextContrastRatio = hex(color, '#000');
+        const whiteTextContrastRatio = hex(color, '#fff');
+        return {
+          hex: color,
+          rgb: convertColor.hex.rgb(color),
+          name: `${(index + 1) * 100}`,
+          token: `${swatchName}.${(index + 1) * 100}`,
+          contrast: {
+            white: {
+              ratio: whiteTextContrastRatio,
+              score: score(whiteTextContrastRatio),
+            },
+            black: {
+              ratio: blackTextContrastRatio,
+              score: score(blackTextContrastRatio),
+            },
+          },
+        };
+      }),
     };
   });
 
