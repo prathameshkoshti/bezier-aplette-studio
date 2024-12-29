@@ -5,6 +5,7 @@ import CurveTypeSelect from '@components/CurveType';
 import FreeHandModeCheckbox from '@components/FreeHandMode';
 import GenerateSwatchButton from '@components/GenerateSwatchButton';
 import SwatchName from '@components/SwatchName';
+import PluginInfo from '@components/PluginInfo';
 import styles from './colorPickerInput.module.css';
 
 function ColorPickerInput() {
@@ -23,7 +24,10 @@ function ColorPickerInput() {
         <FreeHandModeCheckbox />
         <CurveTypeSelect />
       </div>
-      <GenerateSwatchButton />
+      <div className="flex justify-between">
+        <PluginInfo />
+        <GenerateSwatchButton />
+      </div>
     </div>
   );
 }
