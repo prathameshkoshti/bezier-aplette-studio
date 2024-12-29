@@ -15,13 +15,13 @@ import {
   NOTO_SANS_MONO_REGULAR_FONT,
   NOTO_SANS_REGULAR_FONT,
   PILL_FONT_SIZE,
-  PILL_ITEM_SPACING,
+  PILL_ITEMS_SPACING,
   PILL_PADDING,
   WHITE_COLOR,
-  CONTRAST_PILL_ITEM_SPACING,
+  CONTRAST_PILL_ITEMS_SPACING,
   PILL_BORDER_RADIUS,
   DEFAULT_FONT_SIZE,
-  COLOR_INFO_ITEM_SPACING,
+  COLOR_INFO_ITEMS_SPACING,
   COLOR_INFO_PADDING,
 } from './constants';
 
@@ -93,6 +93,7 @@ export const createAutoLayout = (
     frame.paddingLeft = paddingLeft;
   }
   frame.itemSpacing = itemSpacing;
+  frame.counterAxisSpacing = itemSpacing;
 
   return frame;
 };
@@ -100,7 +101,7 @@ export const createAutoLayout = (
 export const getColorTokenNode = (text: string) => {
   const tokenNode = createAutoLayout(
     PILL_PADDING as [number, number, number, number],
-    PILL_ITEM_SPACING,
+    PILL_ITEMS_SPACING,
     'HORIZONTAL',
   );
   const tokenTextNode = createTextNode(text, PILL_FONT_SIZE, undefined, true);
@@ -120,7 +121,7 @@ export const getContrastNode = (
 ) => {
   const contrastNode = createAutoLayout(
     PILL_PADDING as [number, number, number, number],
-    CONTRAST_PILL_ITEM_SPACING,
+    CONTRAST_PILL_ITEMS_SPACING,
     'HORIZONTAL',
   );
   const { ratio, score } = contrast;
@@ -154,12 +155,12 @@ export const createColorNode = (color: ColorData, swatchToken: string) => {
   );
   const colorPrimaryInfo = createAutoLayout(
     COLOR_INFO_PADDING,
-    COLOR_INFO_ITEM_SPACING,
+    COLOR_INFO_ITEMS_SPACING,
     'HORIZONTAL',
   );
   const colorSecondaryInfo = createAutoLayout(
     COLOR_INFO_PADDING,
-    COLOR_INFO_ITEM_SPACING,
+    COLOR_INFO_ITEMS_SPACING,
     'HORIZONTAL',
   );
 

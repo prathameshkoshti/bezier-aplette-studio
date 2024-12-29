@@ -4,7 +4,13 @@
 // This plugin will open a window to prompt the user to enter a number, and
 // it will then create that many rectangles on the screen.
 import type { SwatchData } from './types';
-import { BORDER_RADIUS } from './constants';
+import {
+  BORDER_RADIUS,
+  SWATCH_COLLECTION_ITEMS_SPACING,
+  SWATCH_COLLECTION_PADDING,
+  SWATCH_ITEMS_SPACING,
+  SWATCH_PADDING,
+} from './constants';
 import {
   createAutoLayout,
   createColorNode,
@@ -50,12 +56,24 @@ const createStyles = (swatches: SwatchData[]) => {
 const createPalette = (swatches: SwatchData[]) => {
   try {
     const nodes: SceneNode[] = [];
-
+    const swatchCollection = createAutoLayout(
+      SWATCH_COLLECTION_PADDING,
+      SWATCH_COLLECTION_ITEMS_SPACING,
+      'HORIZONTAL',
+    );
+    swatchCollection.fills = [figma.util.solidPaint('#00000000')];
+    swatchCollection.name = 'Swatch Collection';
+    swatchCollection.layoutWrap = 'WRAP';
+    swatchCollection.maxWidth = 2600;
     for (const swatch of swatches) {
       // create frame
-      const frame = createAutoLayout(50, 20, 'VERTICAL');
-      frame.x = 0;
-      frame.y = 0;
+      const frame = createAutoLayout(
+        SWATCH_PADDING,
+        SWATCH_ITEMS_SPACING,
+        'VERTICAL',
+      );
+      // frame.x = 0;
+      // frame.y = 0;
       figma.currentPage.appendChild(frame);
       frame.cornerRadius = BORDER_RADIUS;
 
@@ -74,6 +92,7 @@ const createPalette = (swatches: SwatchData[]) => {
       frame.name = swatch.name;
       frame.appendChild(headerText);
       frame.appendChild(swatchFrameGroup);
+      swatchCollection.appendChild(frame);
     }
     figma.viewport.scrollAndZoomIntoView(nodes);
   } catch (error) {
