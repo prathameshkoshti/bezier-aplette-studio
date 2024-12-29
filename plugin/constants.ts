@@ -19,7 +19,7 @@ export const PILL_ITEM_SPACING = 0;
 export const PILL_BORDER_RADIUS = 10;
 export const PILL_FONT_SIZE = 10;
 
-export const CONTRAST_PILL_ITEM_SPACING = 5;
+export const CONTRAST_PILL_ITEM_SPACING = 3;
 
 export const DEFAULT_FONT_SIZE = 16;
 

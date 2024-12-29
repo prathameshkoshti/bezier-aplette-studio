@@ -130,7 +130,7 @@ export const getContrastNode = (
   const borderColor = forColor === 'black' ? DARK_BORDER : LIGHT_BORDER;
 
   const contrastRatio = createTextNode(
-    String(ratio.toFixed(2)),
+    `${String(ratio.toFixed(2))}:`,
     PILL_FONT_SIZE,
     textColor,
   );
