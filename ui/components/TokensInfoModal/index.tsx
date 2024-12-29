@@ -7,7 +7,7 @@ import {
   DialogTrigger,
 } from '@components/ui/dialog';
 import Button from '@components/ui/button';
-import CurlyBrackets from '@components/Icons/CurlyBrackets';
+import CurlyBracketsIcon from '@components/Icons/CurlyBrackets';
 import CodeBlock from '@components/CodeBlock';
 import type { TokensInfoModalProps } from './type';
 
@@ -25,7 +25,7 @@ function TokensInfoModal({
           className="flex gap-2"
           disabled={!atLeastOneSwatchCreated}
         >
-          <CurlyBrackets width={16} height={16} />
+          <CurlyBracketsIcon width={16} height={16} />
           Tokens
         </Button>
       </DialogTrigger>

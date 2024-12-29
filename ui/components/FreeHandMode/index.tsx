@@ -1,4 +1,4 @@
-import Curve from '@components/Icons/Curve';
+import CurveIcon from '@components/Icons/Curve';
 import { ToggleGroup, ToggleGroupItem } from '@components/ui/toggle-group';
 import {
   Tooltip,
@@ -44,7 +44,7 @@ function FreeHandMode() {
                 value="freeHandMode"
                 aria-label="Free Hand Mode"
               >
-                <Curve stroke={freeHandMode ? '#fff' : '#000'} />
+                <CurveIcon stroke={freeHandMode ? '#fff' : '#000'} />
               </ToggleGroupItem>
             </ToggleGroup>
           </TooltipTrigger>

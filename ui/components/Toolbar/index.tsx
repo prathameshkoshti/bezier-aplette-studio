@@ -3,8 +3,8 @@ import { getSwatchData } from '@utils/index';
 import Button from '@components/ui/button';
 import useColorPicker from '@store/colorPicker';
 import TokensInfoModal from '@components/TokensInfoModal';
-import Colors from '@components/Icons/Colors';
-import Export from '@components/Icons/Export';
+import ColorsIcon from '@components/Icons/Colors';
+import ExportIcon from '@components/Icons/Export';
 
 function Toolbar() {
   const { swatches } = useColorPicker(
@@ -41,7 +41,7 @@ function Toolbar() {
         disabled={!atLeastOneSwatchCreated}
         onClick={() => handleColorOperation('export-color-palette')}
       >
-        <Export width={16} height={16} />
+        <ExportIcon width={16} height={16} />
         Export Palette
       </Button>
       <Button
@@ -49,7 +49,7 @@ function Toolbar() {
         disabled={!atLeastOneSwatchCreated}
         onClick={() => handleColorOperation('create-color-styles')}
       >
-        <Colors width={16} height={16} stroke="white" />
+        <ColorsIcon width={16} height={16} stroke="white" />
         Create Styles
       </Button>
     </div>
