@@ -14,6 +14,7 @@ import {
 import { getColorsFromCoordinates } from '@utils';
 import Button from '@components/ui/button';
 import CopyIcon from '@components/Icons/Copy';
+import Color from '@components/Color';
 import EditIcon from '@components/Icons/Edit';
 import DeleteIcon from '@components/Icons/Delete';
 import type { SwatchProps } from './types';
@@ -107,13 +108,10 @@ function Swatch({
       </AccordionTrigger>
       <AccordionContent className="p-4">
         <div className="w-full overflow-y-auto rounded-xl">
-          {colors.map((color) => (
-            <div
-              key={color}
-              className="w-full h-20 "
-              style={{ background: color }}
-            />
-          ))}
+          {colors.map((color, index) => {
+            const number = (index + 1) * 100;
+            return <Color color={color} token={`${swatch.name}.${number}`} number={number} />;
+          })}
         </div>
       </AccordionContent>
     </AccordionItem>
