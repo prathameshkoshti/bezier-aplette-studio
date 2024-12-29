@@ -6,25 +6,25 @@ export const INPUT_DEFAULT_VALUES: InputsState = {
   curveSubType: '',
   swatchName: '',
   autoGenerateSwatchName: true,
-  stepCount: 7,
+  stepCount: 9,
   freeHandMode: true,
 };
 
 export const COORDINATES_DEFAULT_VALUES: CoordinatesState = {
   startPoint: {
-    x: 95,
-    y: 95,
+    x: 90,
+    y: 80,
   },
   endPoint: {
-    x: 360,
-    y: 360,
+    x: 370,
+    y: 300,
   },
   startPointHandle: {
     x: 360,
-    y: 95,
+    y: 85,
   },
   endPointHandle: {
-    x: 360,
-    y: 95,
+    x: 370,
+    y: 65,
   },
 };
