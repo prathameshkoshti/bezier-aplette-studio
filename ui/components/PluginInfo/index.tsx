@@ -41,7 +41,7 @@ function PluginInfo() {
                   <Tooltip>
                     <TooltipTrigger>
                       <a
-                        href={import.meta.env.VITE_APP_GH_REPO}
+                        href="https://github.com/prathameshkoshti/figma-plugin-color-swatch-generator"
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -53,20 +53,18 @@ function PluginInfo() {
                 </TooltipProvider>
               </div>
               <div className="text-sm flex justify-center items-center gap-1">
-                <span>
-                  By
-                </span>
+                <span>By</span>
                 <div className="flex items-center gap-2">
                   <TooltipProvider delayDuration={1}>
                     <Tooltip>
                       <TooltipTrigger>
                         <a
-                          href={import.meta.env.VITE_APP_CONTACT_WEBSITE}
+                          href="https://prathameshkoshti.com"
                           target="_blank"
                           rel="noreferrer"
                           className="text-purple-500 underline"
                         >
-                          {import.meta.env.VITE_DEVELOPED_BY}
+                          Prathamesh Koshti
                         </a>
                       </TooltipTrigger>
                       <TooltipContent>Portfolio</TooltipContent>
@@ -82,9 +80,9 @@ function PluginInfo() {
           can drop me an email on{' '}
           <a
             className="text-purple-500 underline"
-            href={`mailto:${import.meta.env.VITE_APP_CONTACT_EMAIL}`}
+            href="mailto:prathameshkoshti@gmail.com"
           >
-            {import.meta.env.VITE_APP_CONTACT_EMAIL}
+            prathameshkoshti@gmail.com
           </a>
         </div>
       </DialogContent>
