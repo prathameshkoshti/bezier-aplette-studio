@@ -14,7 +14,6 @@ import {
 } from '@components/ui/tooltip';
 import GithubIcon from '@components/Icons/Github';
 import InfoIcon from '@components/Icons/Info';
-import LinkIcon from '@components/Icons/Link';
 
 function PluginInfo() {
   return (
@@ -27,7 +26,7 @@ function PluginInfo() {
                 <InfoIcon width={15} height={15} />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Plugin Information</TooltipContent>
+            <TooltipContent>About</TooltipContent>
           </Tooltip>
         </TooltipProvider>
       </DialogTrigger>
@@ -36,8 +35,8 @@ function PluginInfo() {
           <DialogTitle>
             <div className="flex flex-col items-center justify-center gap-3">
               <div>{import.meta.env.VITE_APP_NAME}</div>
-              <div className="text-sm">v{import.meta.env.VITE_APP_VERSION}</div>
-              <div className="flex gap-2">
+              <div className="text-sm flex items-center gap-2">
+                <span>v{import.meta.env.VITE_APP_VERSION}</span>
                 <TooltipProvider delayDuration={1}>
                   <Tooltip>
                     <TooltipTrigger>
@@ -46,26 +45,34 @@ function PluginInfo() {
                         target="_blank"
                         rel="noreferrer"
                       >
-                        <GithubIcon />
+                        <GithubIcon width={16} height={16} />
                       </a>
                     </TooltipTrigger>
                     <TooltipContent>Github Repo</TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
-                <TooltipProvider delayDuration={1}>
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <a
-                        href={import.meta.env.VITE_APP_CONTACT_WEBSITE}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <LinkIcon />
-                      </a>
-                    </TooltipTrigger>
-                    <TooltipContent>Website</TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+              </div>
+              <div className="text-sm flex justify-center items-center gap-1">
+                <span>
+                  By
+                </span>
+                <div className="flex items-center gap-2">
+                  <TooltipProvider delayDuration={1}>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <a
+                          href={import.meta.env.VITE_APP_CONTACT_WEBSITE}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-purple-500 underline"
+                        >
+                          {import.meta.env.VITE_DEVELOPED_BY}
+                        </a>
+                      </TooltipTrigger>
+                      <TooltipContent>Portfolio</TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
               </div>
             </div>
           </DialogTitle>
