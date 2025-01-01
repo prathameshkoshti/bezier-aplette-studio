@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import camelCase from 'camelcase';
 import type { MouseEventHandler } from 'react';
 import {
   AccordionContent,
@@ -110,7 +111,13 @@ function Swatch({
         <div className="w-full overflow-y-auto rounded-xl">
           {colors.map((color, index) => {
             const number = (index + 1) * 100;
-            return <Color color={color} token={`${swatch.name}.${number}`} number={number} />;
+            return (
+              <Color
+                color={color}
+                token={`${camelCase(swatch.name)}.${number}`}
+                number={number}
+              />
+            );
           })}
         </div>
       </AccordionContent>
