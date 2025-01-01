@@ -4,7 +4,7 @@ This plugin can help you create a color palette using the bézier curve handler 
 
 ## How to use this plugin:
 
-![Image 1](https://github.com/user-attachments/assets/4c51b16b-e792-42e5-b443-24a6f43c2d4d)
+![Image 1](https://github.com/user-attachments/assets/d0e68fa6-7cfd-4f9f-ab47-13b179a5f8e0)
 ### As shown in the above image, the UI will have the following input components:
 - **Cubic bézier curve color picker:** this will have two color points (start and end point) and two handler points from which a bézier curve will be drawn.
 - **Name:** to name the swatch (can be auto-generated.)
@@ -14,7 +14,7 @@ This plugin can help you create a color palette using the bézier curve handler 
 - **Curve transition dropdown:** this selection will have options for curve transition type such as ease-in, ease-out, and ease-in-out, (for the linear option this will be disabled.)
 - **Generate swatch button:** to generate the swatch.
 
-![Image 2](https://github.com/user-attachments/assets/99b6481f-4ff7-41fd-9bd9-f0a20b1f93ab)
+![Image 2](https://github.com/user-attachments/assets/5153c2b7-8a52-4257-9461-dad018ea1c81)
 ### On generating the swatch right side will have the following UI elements:
 - **Accordions of swatches:** accordions of swatches will appear as you generate the swatches, the swatches can be edited, duplicated, and deleted.
 - **Color info:** each swatch will have a list of colors, along with the color's number, hex code, token, and contrast ratio information.
