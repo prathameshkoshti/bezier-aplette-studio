@@ -33,8 +33,10 @@ export const getRelativePositionForHandles = (
   const curveHeight = Math.abs(startPoint.y - endPoint.y);
 
   // get relative position for start and end point coordinates
-  const x1RelativePosition = startPoint.x - colorPickerPadding;
-  const y1RelativePosition = startPoint.y - colorPickerPadding;
+  const lowestX = startPoint.x < endPoint.x ? startPoint.x : endPoint.x;
+  const lowestY = startPoint.y < endPoint.y ? startPoint.y : endPoint.y;
+  const x1RelativePosition = lowestX - colorPickerPadding;
+  const y1RelativePosition = lowestY - colorPickerPadding;
 
   const curveFunction = getCurveFunction(curveType, curveSubType);
 
