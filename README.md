@@ -26,7 +26,7 @@ This plugin can help you create a color palette using the bézier curve handler 
 
 ## To set up the project follow the following instructions:
 
-- Fork the repository
+- Clone the repository
 - Run the following command to install packages:
   ```
   npm install
