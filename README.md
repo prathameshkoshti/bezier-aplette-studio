@@ -31,7 +31,7 @@ This plugin can help you create a color palette using the bézier curve handler 
   ```
   npm install
   ```
-- To run the project locally in the browse, you can run the following command:
+- To run the project locally in the browser, you can run the following command:
   ```
   npm run dev
   ```
