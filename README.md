@@ -1,4 +1,4 @@
-# figma-plugin-color-swatch-generator
+# Bezier Palette Studio - Figma Plugin
 
 This plugin can help you create a color palette using the bézier curve handler on the HSV color picker.
 
