@@ -117,7 +117,15 @@ export const createSwatchesSlice = (
     const index = swatchesCopy.findIndex((swatch) => swatch.id === id);
     swatchesCopy.splice(index, 1);
 
-    const swatchName = getNameFromHue(INPUT_DEFAULT_VALUES.hue);
+    const { endPoint, endPointHandle, startPoint, startPointHandle } =
+      COORDINATES_DEFAULT_VALUES;
+    const swatchName = getNameFromHue(
+      INPUT_DEFAULT_VALUES.hue,
+      startPoint,
+      endPoint,
+      startPointHandle,
+      endPointHandle,
+    );
     const swatchNames = swatches.map((swatch) => swatch.name);
     const newName = doesNameExistInArray(swatchNames, swatchName);
     set({
