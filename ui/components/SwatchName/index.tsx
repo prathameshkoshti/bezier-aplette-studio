@@ -10,6 +10,10 @@ import Checkbox from '@components/ui/checkbox';
 function SwatchName() {
   const {
     hue,
+    startPoint,
+    endPoint,
+    startPointHandle,
+    endPointHandle,
     swatchName,
     swatches,
     updateSwatchName,
@@ -20,6 +24,10 @@ function SwatchName() {
     useShallow((state) => {
       const {
         hue: hueState,
+        startPoint: startPointState,
+        endPoint: endPointState,
+        startPointHandle: startPointHandleState,
+        endPointHandle: endPointHandleState,
         swatchName: swatchNameState,
         swatches: swatchesState,
         updateSwatchName: updateSwatchNameState,
@@ -29,6 +37,10 @@ function SwatchName() {
       } = state;
       return {
         hue: hueState,
+        startPoint: startPointState,
+        endPoint: endPointState,
+        startPointHandle: startPointHandleState,
+        endPointHandle: endPointHandleState,
         swatchName: swatchNameState,
         swatches: swatchesState,
         updateSwatchName: updateSwatchNameState,
@@ -56,14 +68,24 @@ function SwatchName() {
         updateSwatchName(editingSwatch.name);
       }
     } else if (autoGenerateSwatchName) {
-      const name = getNameFromHue(hue);
+      const name = getNameFromHue(
+        hue,
+        startPoint,
+        endPoint,
+        startPointHandle,
+        endPointHandle,
+      );
       const swatchNames = swatches.map((swatch) => swatch.name);
       const newName = doesNameExistInArray(swatchNames, name);
       updateSwatchName(newName);
     }
   }, [
     autoGenerateSwatchName,
+    endPoint,
+    endPointHandle,
     hue,
+    startPoint,
+    startPointHandle,
     swatchEditingId,
     swatches,
     updateSwatchName,

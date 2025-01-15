@@ -8,6 +8,7 @@ import convertColor from 'color-convert';
 import type { HueValue, SwatchData } from '@appTypes/color';
 import type { Point } from '@appTypes/coords';
 import type { Swatch, Swatches } from '@store/types';
+import { COLOR_PICKER_CONTAINER_SIZE, COLOR_RANGES } from '@constants/colors';
 import {
   MAX_BOUNDARY,
   MIN_BOUNDARY,
@@ -29,6 +30,7 @@ export function getColorForCoordinates(
   pointCoords: Point,
   minBoundary: Point,
   maxBoundary: Point,
+  returnHexValue = true,
 ) {
   const { x, y } = pointCoords;
   const saturationPoint = x - minBoundary.x;
@@ -38,16 +40,19 @@ export function getColorForCoordinates(
   const colorPickerHeight = maxBoundary.y - minBoundary.y;
 
   const saturation = clamp((saturationPoint / colorPickerWidth) * 100, 0, 100);
-  const lightness = clamp(
+  const value = clamp(
     100 - (brightnessPoint / colorPickerHeight) * 100,
     0,
     100,
   );
-  const newColor = convertColor.hsv.hex([hue, saturation, lightness]);
-  return `#${newColor}`;
+  if (returnHexValue) {
+    const newColor = convertColor.hsv.hex([hue, saturation, value]);
+    return `#${newColor}`;
+  }
+  return [hue, saturation, value];
 }
 
-export const getColorsFromCoordinates = (swatch: Swatch) => {
+export const getColorsFromCoordinates = (swatch: Swatch): string[] => {
   const {
     hue,
     startPoint,
@@ -67,7 +72,12 @@ export const getColorsFromCoordinates = (swatch: Swatch) => {
 
   return colorsCords.map((colorCord) => {
     const { x, y } = colorCord;
-    return getColorForCoordinates(hue, { x, y }, MIN_BOUNDARY, MAX_BOUNDARY);
+    return getColorForCoordinates(
+      hue,
+      { x, y },
+      MIN_BOUNDARY,
+      MAX_BOUNDARY,
+    ) as string;
   });
 };
 
@@ -125,23 +135,64 @@ export const getTokensData = (swatches: Swatches) => {
 
 export const uuid = () => Date.now().toString(36);
 
-export const getNameFromHue = (hue: HueValue) => {
+export const isNeutralColor = (
+  hue: HueValue,
+  startPoint: Point,
+  endPoint: Point,
+  startPointHandle: Point,
+  endPointHandle: Point,
+) => {
+  const [, startPointSaturation] = getColorForCoordinates(
+    hue,
+    { x: startPoint.x, y: startPoint.y },
+    MIN_BOUNDARY,
+    MAX_BOUNDARY,
+    false,
+  ) as number[];
+
+  const [, endPointSaturation] = getColorForCoordinates(
+    hue,
+    { x: endPoint.x, y: endPoint.y },
+    MIN_BOUNDARY,
+    MAX_BOUNDARY,
+    false,
+  ) as number[];
+
+  if (
+    endPointSaturation <= 10 &&
+    startPointSaturation <= 10 &&
+    startPointHandle.x <= COLOR_PICKER_CONTAINER_SIZE / 2 &&
+    endPointHandle.x <= COLOR_PICKER_CONTAINER_SIZE / 2 &&
+    startPointHandle.y <= COLOR_PICKER_CONTAINER_SIZE / 2 &&
+    endPointHandle.y >= COLOR_PICKER_CONTAINER_SIZE / 2
+  ) {
+    return true;
+  }
+  return false;
+};
+
+export const getNameFromHue = (
+  hue: HueValue,
+  startPoint: Point,
+  endPoint: Point,
+  startPointHandle: Point,
+  endPointHandle: Point,
+) => {
   if (hue < 0 || hue > 360) {
     return 'Invalid hue value. Hue should be between 0 and 360.';
   }
 
-  if ((hue >= 0 && hue < 15) || (hue >= 345 && hue <= 360)) return 'Red';
-  if (hue >= 15 && hue < 45) return 'Orange';
-  if (hue >= 45 && hue < 75) return 'Yellow';
-  if (hue >= 75 && hue < 100) return 'Lime';
-  if (hue >= 75 && hue < 160) return 'Green';
-  if (hue >= 160 && hue < 175) return 'Teal';
-  if (hue >= 175 && hue < 205) return 'Cyan';
-  if (hue >= 205 && hue < 245) return 'Blue';
-  if (hue >= 245 && hue < 270) return 'Indigo';
-  if (hue >= 270 && hue < 285) return 'Purple';
-  if (hue >= 285 && hue < 315) return 'Magenta';
-  if (hue >= 315 && hue < 345) return 'Pink';
+  if (
+    isNeutralColor(hue, startPoint, endPoint, startPointHandle, endPointHandle)
+  ) {
+    return 'Neutral';
+  }
+
+  for (const { range, name } of COLOR_RANGES) {
+    if (range.some(([start, end]) => hue >= start && hue < end)) {
+      return name;
+    }
+  }
 
   return 'Unknown';
 };

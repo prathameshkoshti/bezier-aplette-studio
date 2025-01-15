@@ -72,7 +72,7 @@ function Point({
         minBoundary,
         maxBoundary,
       );
-      setColor(newColor);
+      setColor(newColor as string);
     }
   }, [hue, isHandle, maxBoundary, minBoundary, x, y]);
 
