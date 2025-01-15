@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import type { ChangeEventHandler } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { Input } from '@components/ui/input';
@@ -59,30 +59,55 @@ function SwatchName() {
     updateAutoGenerateSwatchName(!autoGenerateSwatchName);
   };
 
+  const generateSwatchName = useCallback(() => {
+    const name = getNameFromHue(
+      hue,
+      startPoint,
+      endPoint,
+      startPointHandle,
+      endPointHandle,
+    );
+    const swatchNames = swatches
+      .map((swatch) => {
+        if (swatchEditingId !== swatch.id) {
+          return swatch.name;
+        }
+        return '';
+      })
+      .filter(Boolean);
+    const newName = doesNameExistInArray(swatchNames, name);
+    return newName;
+  }, [
+    endPoint,
+    endPointHandle,
+    hue,
+    startPoint,
+    startPointHandle,
+    swatchEditingId,
+    swatches,
+  ]);
+
   useEffect(() => {
     if (swatchEditingId) {
       const editingSwatch = swatches.find(
         (swatch) => swatch.id === swatchEditingId,
       );
       if (editingSwatch) {
-        updateSwatchName(editingSwatch.name);
+        if (autoGenerateSwatchName) {
+          const newName = generateSwatchName();
+          updateSwatchName(newName);
+        } else {
+          updateSwatchName(editingSwatch.name);
+        }
       }
-    } else if (autoGenerateSwatchName) {
-      const name = getNameFromHue(
-        hue,
-        startPoint,
-        endPoint,
-        startPointHandle,
-        endPointHandle,
-      );
-      const swatchNames = swatches.map((swatch) => swatch.name);
-      const newName = doesNameExistInArray(swatchNames, name);
+    }
+    if (autoGenerateSwatchName) {
+      const newName = generateSwatchName();
       updateSwatchName(newName);
     }
   }, [
     autoGenerateSwatchName,
-    endPoint,
-    endPointHandle,
+    generateSwatchName,
     hue,
     startPoint,
     startPointHandle,
