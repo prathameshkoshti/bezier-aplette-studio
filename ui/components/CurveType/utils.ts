@@ -1,10 +1,10 @@
+import capitalize from 'lodash/capitalize';
 import type { CurveSubType, CurveType } from '@appTypes/curves';
 import type { Point } from '@appTypes/coords';
 import {
   COLOR_PICKER_CONTAINER_SIZE,
   COLOR_PICKER_SIZE,
 } from '@constants/colors';
-import { capitalize } from '@utils';
 import { bezierFunctions, curvesTypes } from '@constants/curves';
 
 const colorPickerPadding =
