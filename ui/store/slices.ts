@@ -105,8 +105,10 @@ export const createSwatchesSlice = (
     if (swatch) {
       const { id: swatchId, name, ...restSwatchData } = swatch;
       const swatchName = `${name} Copy`;
+      const swatchNames = swatches.map((s) => s.name);
+      const newName = doesNameExistInArray(swatchNames, swatchName);
       const swatchesCopy = cloneDeep(swatches);
-      swatchesCopy.push({ ...restSwatchData, name: swatchName, id: uuid() });
+      swatchesCopy.push({ ...restSwatchData, name: newName, id: uuid() });
       set({ swatches: swatchesCopy });
     }
   },
