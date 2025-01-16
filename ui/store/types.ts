@@ -68,6 +68,7 @@ export type SwatchesAction = {
   deleteSwatch: (id: string) => void;
   loadSwatch: (id: string) => void;
   unloadSwatch: () => void;
+  importSwatches: (swatches: Swatches) => void;
 };
 
 export type SetFunction = (
