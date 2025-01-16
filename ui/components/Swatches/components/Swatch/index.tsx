@@ -63,7 +63,7 @@ function Swatch({
               <TooltipTrigger>
                 <Button
                   variant="ghost"
-                  className="px-2"
+                  size="icon"
                   onClick={duplicateColorSwatch}
                 >
                   <CopyIcon width={18} height={18} stroke="currentColor" />
@@ -77,7 +77,7 @@ function Swatch({
               <TooltipTrigger>
                 <Button
                   variant="ghost"
-                  className="px-2"
+                  size="icon"
                   onClick={editColorSwatch}
                   disabled={isEditing}
                 >
@@ -90,11 +90,7 @@ function Swatch({
           <TooltipProvider delayDuration={1}>
             <Tooltip>
               <TooltipTrigger>
-                <Button
-                  variant="ghost"
-                  className="px-2"
-                  onClick={deleteColorSwatch}
-                >
+                <Button variant="ghost" size="icon" onClick={deleteColorSwatch}>
                   <DeleteIcon
                     width={18}
                     height={18}
