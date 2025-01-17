@@ -9,6 +9,7 @@ import type {
   PresetsAction,
   PresetsState,
   SetFunction,
+  Swatches,
   SwatchesAction,
   SwatchesState,
 } from './types';
@@ -165,5 +166,9 @@ export const createSwatchesSlice = (
 
   unloadSwatch: () => {
     set({ swatchEditingId: null });
+  },
+
+  importSwatches: (swatches: Swatches) => {
+    set({ swatches });
   },
 });

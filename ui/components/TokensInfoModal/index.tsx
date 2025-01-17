@@ -6,6 +6,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@components/ui/dialog';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@components/ui/tooltip';
 import Button from '@components/ui/button';
 import CurlyBracketsIcon from '@components/Icons/CurlyBrackets';
 import CodeBlock from '@components/CodeBlock';
@@ -20,14 +26,21 @@ function TokensInfoModal({
   return (
     <Dialog>
       <DialogTrigger disabled={!atLeastOneSwatchCreated}>
-        <Button
-          variant="secondary"
-          className="flex gap-2"
-          disabled={!atLeastOneSwatchCreated}
-        >
-          <CurlyBracketsIcon width={16} height={16} />
-          Tokens
-        </Button>
+        <TooltipProvider delayDuration={1}>
+          <Tooltip>
+            <TooltipTrigger>
+              <Button
+                size="icon"
+                variant="secondary"
+                className="flex gap-2"
+                disabled={!atLeastOneSwatchCreated}
+              >
+                <CurlyBracketsIcon width={16} height={16} />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Tokens</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </DialogTrigger>
       <DialogContent onOpenAutoFocus={(e) => e.preventDefault()}>
         <DialogHeader>

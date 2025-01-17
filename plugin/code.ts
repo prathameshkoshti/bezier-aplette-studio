@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import type { SwatchData } from './types';
+import type { Swatch, SwatchData } from './types';
 import {
   BORDER_RADIUS,
   SWATCH_COLLECTION_ITEMS_SPACING,
@@ -22,7 +22,23 @@ import {
   await preloadFonts();
 })();
 
-const createStyles = (swatches: SwatchData[]) => {
+const getPluginData = (key: string) => {
+  const retrievedData = figma.root.getPluginData(key);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-argument
+  return JSON.parse(retrievedData);
+};
+
+const setPluginData = (key: string, data: unknown) => {
+  const timestamp = Date.now();
+  const pluginData = {
+    data,
+    timestamp,
+  };
+  const stringifiedData = JSON.stringify(pluginData);
+  figma.root.setPluginData(key, stringifiedData);
+};
+
+const createStyles = (swatches: SwatchData[], colorData: Swatch[]) => {
   (async () => {
     try {
       const styles = await figma.getLocalPaintStylesAsync();
@@ -40,6 +56,7 @@ const createStyles = (swatches: SwatchData[]) => {
         }
       }
       if (swatches.length) {
+        setPluginData('palette-data', colorData);
         figma.notify('Styles Created! 🎉');
       }
     } catch (error) {
@@ -97,6 +114,18 @@ const createPalette = (swatches: SwatchData[]) => {
   }
 };
 
+const importPalette = () => {
+  const { data, timestamp } = getPluginData('palette-data');
+
+  figma.ui.postMessage({
+    type: 'send-palette-data',
+    payload: {
+      paletteData: data,
+      timestamp,
+    },
+  });
+};
+
 // This shows the HTML page in "ui.html".
 figma.showUI(__html__, {
   height: 768,
@@ -104,14 +133,22 @@ figma.showUI(__html__, {
   themeColors: true,
 });
 
-figma.ui.onmessage = (msg: { type: string; colors: SwatchData[] }) => {
+figma.ui.onmessage = (msg: {
+  type: string;
+  colors: SwatchData[];
+  colorData: Swatch[];
+}) => {
   switch (msg.type) {
     case 'create-color-styles': {
-      createStyles(msg.colors);
+      createStyles(msg.colors, msg.colorData);
       break;
     }
     case 'export-color-palette': {
       createPalette(msg.colors);
+      break;
+    }
+    case 'import-color-palette': {
+      importPalette();
       break;
     }
     default: {
