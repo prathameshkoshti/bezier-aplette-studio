@@ -112,10 +112,10 @@ function Swatches() {
             <p className="text-center">
               You already have previously created styles on <br />
               <strong>{stylesLastSaveDataTime}</strong>,<br />
-              do you want to load these styles?
+              do you want to import these styles?
             </p>
             <Button className="flex gap-2" onClick={loadStyles}>
-              <Load fill="#fff" /> Load Styles
+              <Load fill="#fff" /> Import Styles
             </Button>
           </>
         ) : null}
