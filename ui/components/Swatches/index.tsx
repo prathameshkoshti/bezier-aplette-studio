@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useShallow } from 'zustand/react/shallow';
-import useColorPicker from '@store/colorPicker';
 import type { Swatches as SwatchesType } from '@store/types';
 import { Accordion } from '@components/ui/accordion';
+import BlankPalette from '@components/Icons/BlankPalette';
+import useColorPicker from '@store/colorPicker';
 import Button from '@components/ui/button';
 import Swatch from './components/Swatch';
 
@@ -100,7 +101,10 @@ function Swatches() {
 
     return (
       <div className="flex flex-col gap-4 justify-center items-center h-full">
-        <p>No palette created.</p>
+        <div>
+          <BlankPalette width={128} height={128} />
+        </div>
+        <p>Your palette seems blank. Let&apos;s fill in some color in it.</p>
         {swatchData?.length ? (
           <>
             <p className="text-center">
