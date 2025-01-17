@@ -4,6 +4,7 @@ import type { Swatches as SwatchesType } from '@store/types';
 import { Accordion } from '@components/ui/accordion';
 import BlankPalette from '@components/Icons/BlankPalette';
 import useColorPicker from '@store/colorPicker';
+import Load from '@components/Icons/Load';
 import Button from '@components/ui/button';
 import Swatch from './components/Swatch';
 
@@ -107,12 +108,15 @@ function Swatches() {
         <p>Your palette seems blank. Let&apos;s fill in some color in it.</p>
         {swatchData?.length ? (
           <>
+            <p className="text-center">Or,</p>
             <p className="text-center">
-              You already have styles created on <br />
+              You already have previously created styles on <br />
               <strong>{stylesLastSaveDataTime}</strong>,<br />
               do you want to load these styles?
             </p>
-            <Button onClick={loadStyles}>Load Styles</Button>
+            <Button className="flex gap-2" onClick={loadStyles}>
+              <Load fill="#fff" /> Load Styles
+            </Button>
           </>
         ) : null}
       </div>
