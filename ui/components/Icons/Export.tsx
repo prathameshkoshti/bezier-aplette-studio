@@ -8,7 +8,6 @@ function Export({ width = 24, height = 24, stroke = '#000' }: IconProps) {
       height={height}
       viewBox="0 0 24 24"
       fill="none"
-      color="#000000"
     >
       <path
         d="M19 14V9L12 2H5C3.89543 2 3 2.89543 3 4V20C3 21.1046 3.89543 22 5 22H10"
