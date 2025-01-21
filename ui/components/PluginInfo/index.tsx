@@ -41,7 +41,7 @@ function PluginInfo() {
                   <Tooltip>
                     <TooltipTrigger>
                       <a
-                        href="https://github.com/prathameshkoshti/figma-plugin-color-swatch-generator"
+                        href="https://github.com/phi-ui/bezier-palette-studio"
                         target="_blank"
                         rel="noreferrer"
                       >
