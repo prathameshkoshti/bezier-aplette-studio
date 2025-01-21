@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="container flex">
+    <div className="container flex bg-elevation1 dark:bg-elevation0">
       <ColorPickerInput />
       <div className="flex flex-col my-4 mr-4 w-full gap-4">
         <Toolbar />
