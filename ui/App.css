@@ -4,60 +4,102 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+    --neutral-000: 0 0% 100%;
+    --neutral-100: 220 33.33% 98.24%;
+    --neutral-200: 210 9.37% 87.45%;
+    --neutral-300: 210 7.14% 78.04%;
+    --neutral-400: 207.27 7.01% 69.22%;
+    --neutral-500: 210 7.07% 61.18%;
+    --neutral-600: 208.24 7.17% 53.53%;
+    --neutral-700: 210 9.32% 46.27%;
+    --neutral-800: 210 12% 39.22%;
+    --neutral-900: 210 17.07% 32.16%;
+    --neutral-1000: 210 23.08% 25.49%;
+    --neutral-1100: 210 33.33% 18.82%;
+    --neutral-1200: 210 46.88% 12.55%;
+    --neutral-1300: 210 64.71% 6.67%;
+    --neutral-1400: 210 100% 1.57%;
+
+    --red-100: 0 45.45% 97.84%;
+    --red-200: 0 97.01% 86.86%;
+    --red-300: 0 100% 77.06%;
+    --red-400: 0 98.77% 68.24%;
+    --red-500: 0 90.43% 59.02%;
+    --red-600: 0 78.49% 49.22%;
+    --red-700: 0 90.82% 38.43%;
+    --red-800: 0 98.46% 25.49%;
+    --red-900: 0 100% 9.41%;
+
+    --purple-100: 272.31, 61.9%, 95.88%;
+    --purple-200: 273, 90.91%, 82.75%;
+    --purple-300: 272.93, 94.33%, 72.35%;
+    --purple-400: 273.14, 91.49%, 63.14%;
+    --purple-500: 272.92, 85.15%, 55.1%;
+    --purple-600: 272.89, 82.43%, 46.86%;
+    --purple-700: 273.07, 91.67%, 37.65%;
+    --purple-800: 272.98, 95.62%, 26.86%;
+    --purple-900: 273.33, 96.92%, 12.75%;
+
+    --background: var(--neutral-000);
+    --foreground: var(--neutral-1400);
+
+    --elevation-00: var(--neutral-000);
+    --elevation-01: var(--neutral-100);
+
+    --card: var(--neutral-000);
+    --card-foreground: var(--neutral-1400);
+    --popover: var(--neutral-000);
+    --popover-foreground: var(--neutral-1400);
+    --primary: var(--purple-500);
+    --primary-foreground: var(--purple-100);
+    --primary-border: var(--purple-600);
+    --primary-hover: var(--purple-600);
+    --secondary: var(--neutral-100);
+    --secondary-foreground: var(--neutral-1300);
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
+    --accent: var(--purple-500);
+    --accent-foreground: var(--purple-100);
+    --destructive: var(--red-500);
+    --destructive-foreground: var(--red-100);
+    --border: var(--neutral-200);
+    --input: var(--neutral-200);
+    --ring: var(--neutral-500);
+
     --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
     --color-picker-size: 300px;
     --color-picker-container-size: 450px;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
+    --elevation-00: var(--neutral-1400);
+    --elevation-01: var(--neutral-1300);
+    --elevation-02: var(--neutral-1200);
+    --elevation-03: var(--neutral-1100);
+
+    --background: var(--neutral-1400);
+    --foreground: var(--neutral-100);
+    --card: var(--neutral-1400);
+    --card-foreground: var(--neutral-000);
+    --popover: var(--neutral-1400);
+    --popover-foreground: var(--neutral-000);
+    --primary: var(--purple-600);
+    --primary-border: var(--purple-500);
+    --primary-foreground: var(--purple-100);
+    --primary-hover: var(--purple-500);
+    --accent: var(--purple-500);
+    --accent-foreground: var(--purple-100);
+    --secondary: var(--neutral-1300);
+    --secondary-foreground: var(--neutral-100);
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --accent: var(--purple-500);
+    --accent-foreground: var(--purple-100);
+    --destructive: var(--red-500);
+    --destructive-foreground: var(--red-100);
+    --border: var(--neutral-1000);
+    --input: var(--neutral-1000);
+    --ring: var(--neutral-800);
   }
 }
 
