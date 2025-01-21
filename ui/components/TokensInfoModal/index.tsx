@@ -28,7 +28,7 @@ function TokensInfoModal({
       <DialogTrigger disabled={!atLeastOneSwatchCreated}>
         <TooltipProvider delayDuration={1}>
           <Tooltip>
-            <TooltipTrigger>
+            <TooltipTrigger asChild>
               <Button
                 size="icon"
                 variant="secondary"
