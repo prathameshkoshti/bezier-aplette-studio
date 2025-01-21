@@ -124,7 +124,7 @@ function Swatches() {
   };
 
   return (
-    <div className="flex-1 p-4 overflow-auto border border-solid border-zinc-200 rounded-lg">
+    <div className="flex-1 p-4 overflow-auto rounded-lg bg-elevation0 dark:bg-elevation1">
       {getSwatches()}
     </div>
   );
