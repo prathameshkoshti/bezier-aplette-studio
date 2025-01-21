@@ -30,8 +30,8 @@ function Swatch({
   const { id } = swatch;
 
   const swatchAccordionClasses = clsx(
-    'border border-zinc-300 border-solid mb-4 rounded-lg overflow-hidden',
-    isEditing ? 'border-violet-400' : '',
+    'border border-border border-solid mb-4 rounded-lg overflow-hidden bg-elevation0 dark:bg-elevation2',
+    isEditing ? 'border-primary-border' : '',
   );
 
   const colors = getColorsFromCoordinates(swatch);
