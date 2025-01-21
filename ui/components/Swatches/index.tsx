@@ -103,7 +103,7 @@ function Swatches() {
     return (
       <div className="flex flex-col gap-4 justify-center items-center h-full">
         <div>
-          <BlankPalette width={128} height={128} />
+          <BlankPalette width={128} height={128} fill="currentColor" />
         </div>
         <p>Your palette seems blank. Let&apos;s fill in some color in it.</p>
         {swatchData?.length ? (

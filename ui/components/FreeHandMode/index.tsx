@@ -44,7 +44,7 @@ function FreeHandMode() {
                 value="freeHandMode"
                 aria-label="Free Hand Mode"
               >
-                <CurveIcon stroke={freeHandMode ? '#fff' : '#000'} />
+                <CurveIcon stroke="currentColor" />
               </ToggleGroupItem>
             </ToggleGroup>
           </TooltipTrigger>

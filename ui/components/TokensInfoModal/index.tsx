@@ -35,7 +35,7 @@ function TokensInfoModal({
                 className="flex gap-2"
                 disabled={!atLeastOneSwatchCreated}
               >
-                <CurlyBracketsIcon width={16} height={16} />
+                <CurlyBracketsIcon width={16} height={16} fill="currentColor" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>Tokens</TooltipContent>
