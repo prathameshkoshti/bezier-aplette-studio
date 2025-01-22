@@ -2,6 +2,7 @@ import Button from '@components/ui/button';
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -18,18 +19,18 @@ import InfoIcon from '@components/Icons/Info';
 function PluginInfo() {
   return (
     <Dialog>
-      <DialogTrigger>
-        <TooltipProvider delayDuration={1}>
-          <Tooltip>
-            <TooltipTrigger>
+      <TooltipProvider delayDuration={1}>
+        <Tooltip>
+          <DialogTrigger asChild>
+            <TooltipTrigger asChild>
               <Button variant="ghost" className="flex gap-2 px-3">
                 <InfoIcon width={15} height={15} stroke="currentColor" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>About</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-      </DialogTrigger>
+          </DialogTrigger>
+          <TooltipContent>About</TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
       <DialogContent onOpenAutoFocus={(e) => e.preventDefault()}>
         <DialogHeader>
           <DialogTitle>
@@ -79,6 +80,7 @@ function PluginInfo() {
             </div>
           </DialogTitle>
         </DialogHeader>
+        <DialogDescription />
         <div className="text-center">
           For any technical issues, specific queries or feature requests, you
           can drop me an email on{' '}

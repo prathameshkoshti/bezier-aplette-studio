@@ -2,6 +2,7 @@ import { getTokensData } from '@utils/index';
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -25,9 +26,9 @@ function TokensInfoModal({
 
   return (
     <Dialog>
-      <DialogTrigger disabled={!atLeastOneSwatchCreated}>
-        <TooltipProvider delayDuration={1}>
-          <Tooltip>
+      <TooltipProvider delayDuration={1}>
+        <Tooltip>
+          <DialogTrigger disabled={!atLeastOneSwatchCreated} asChild>
             <TooltipTrigger asChild>
               <Button
                 size="icon"
@@ -38,14 +39,19 @@ function TokensInfoModal({
                 <CurlyBracketsIcon width={16} height={16} fill="currentColor" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Tokens</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-      </DialogTrigger>
-      <DialogContent onOpenAutoFocus={(e) => e.preventDefault()}>
+          </DialogTrigger>
+          <TooltipContent>Tokens</TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+      <DialogContent
+        onOpenAutoFocus={(e) => {
+          e.preventDefault();
+        }}
+      >
         <DialogHeader>
           <DialogTitle>Tokens</DialogTitle>
         </DialogHeader>
+        <DialogDescription />
         <CodeBlock code={swatchData} />
       </DialogContent>
     </Dialog>
