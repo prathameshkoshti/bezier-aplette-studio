@@ -9,7 +9,6 @@ function Trash({ width = 24, height = 24, stroke = '#000' }: IconProps) {
       viewBox="0 0 24 24"
       fill="none"
       role="img"
-      color="#000000"
     >
       <path
         d="M19.5 5.5L18.6139 20.121C18.5499 21.1766 17.6751 22 16.6175 22H7.38246C6.32488 22 5.4501 21.1766 5.38612 20.121L4.5 5.5"

@@ -11,7 +11,7 @@ import styles from './colorPickerInput.module.css';
 function ColorPickerInput() {
   const swatchGeneratorClasses = clsx(
     styles.swatchGenerator,
-    'rounded-lg border border-zinc-200 border-solid p-4 m-4',
+    'rounded-lg p-4 m-4 bg-elevation0 dark:bg-elevation1',
   );
   return (
     <div className={swatchGeneratorClasses}>

@@ -37,14 +37,14 @@ function Toolbar() {
   };
 
   return (
-    <div className="border border-solid border-zinc-200 rounded-lg p-4 flex gap-4 justify-end">
+    <div className="rounded-lg p-4 flex gap-4 justify-end bg-elevation0 dark:bg-elevation1">
       <TokensInfoModal
         atLeastOneSwatchCreated={atLeastOneSwatchCreated}
         swatches={swatches}
       />
       <TooltipProvider delayDuration={1}>
         <Tooltip>
-          <TooltipTrigger>
+          <TooltipTrigger asChild>
             <Button
               size="icon"
               className="flex gap-2"
@@ -52,7 +52,7 @@ function Toolbar() {
               disabled={!atLeastOneSwatchCreated}
               onClick={() => handleColorOperation('export-color-palette')}
             >
-              <ExportIcon width={16} height={16} />
+              <ExportIcon width={16} height={16} stroke="currentColor" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>Export to Frames</TooltipContent>

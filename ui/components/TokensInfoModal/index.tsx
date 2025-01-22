@@ -28,14 +28,14 @@ function TokensInfoModal({
       <DialogTrigger disabled={!atLeastOneSwatchCreated}>
         <TooltipProvider delayDuration={1}>
           <Tooltip>
-            <TooltipTrigger>
+            <TooltipTrigger asChild>
               <Button
                 size="icon"
                 variant="secondary"
                 className="flex gap-2"
                 disabled={!atLeastOneSwatchCreated}
               >
-                <CurlyBracketsIcon width={16} height={16} />
+                <CurlyBracketsIcon width={16} height={16} fill="currentColor" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>Tokens</TooltipContent>

@@ -103,7 +103,7 @@ function Swatches() {
     return (
       <div className="flex flex-col gap-4 justify-center items-center h-full">
         <div>
-          <BlankPalette width={128} height={128} />
+          <BlankPalette width={128} height={128} fill="currentColor" />
         </div>
         <p>Your palette seems blank. Let&apos;s fill in some color in it.</p>
         {swatchData?.length ? (
@@ -112,10 +112,10 @@ function Swatches() {
             <p className="text-center">
               You already have previously created styles on <br />
               <strong>{stylesLastSaveDataTime}</strong>,<br />
-              do you want to load these styles?
+              do you want to import these styles?
             </p>
             <Button className="flex gap-2" onClick={loadStyles}>
-              <Load fill="#fff" /> Load Styles
+              <Load fill="#fff" /> Import Styles
             </Button>
           </>
         ) : null}
@@ -124,7 +124,7 @@ function Swatches() {
   };
 
   return (
-    <div className="flex-1 p-4 overflow-auto border border-solid border-zinc-200 rounded-lg">
+    <div className="flex-1 p-4 overflow-auto rounded-lg bg-elevation0 dark:bg-elevation1">
       {getSwatches()}
     </div>
   );

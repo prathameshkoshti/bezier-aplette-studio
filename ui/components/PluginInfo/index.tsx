@@ -23,7 +23,7 @@ function PluginInfo() {
           <Tooltip>
             <TooltipTrigger>
               <Button variant="ghost" className="flex gap-2 px-3">
-                <InfoIcon width={15} height={15} />
+                <InfoIcon width={15} height={15} stroke="currentColor" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>About</TooltipContent>
@@ -41,11 +41,15 @@ function PluginInfo() {
                   <Tooltip>
                     <TooltipTrigger>
                       <a
-                        href="https://github.com/prathameshkoshti/figma-plugin-color-swatch-generator"
+                        href="https://github.com/phi-ui/bezier-palette-studio"
                         target="_blank"
                         rel="noreferrer"
                       >
-                        <GithubIcon width={16} height={16} />
+                        <GithubIcon
+                          width={16}
+                          height={16}
+                          fill="currentColor"
+                        />
                       </a>
                     </TooltipTrigger>
                     <TooltipContent>Github Repo</TooltipContent>

@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ['class'],
+  safelist: ['dark'],
   content: ['./ui/**/*.{ts,tsx}'],
   prefix: '',
   theme: {
@@ -17,9 +18,32 @@ module.exports = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        elevation0: 'hsl(var(--elevation-00))',
+        elevation1: 'hsl(var(--elevation-01))',
+        elevation2: 'hsl(var(--elevation-02))',
+        elevation3: 'hsl(var(--elevation-03))',
+        neutral: {
+          0: 'hsl(var(--neutral-000))',
+          100: 'hsl(var(--neutral-100))',
+          200: 'hsl(var(--neutral-200))',
+          300: 'hsl(var(--neutral-300))',
+          400: 'hsl(var(--neutral-400))',
+          500: 'hsl(var(--neutral-500))',
+          600: 'hsl(var(--neutral-600))',
+          700: 'hsl(var(--neutral-700))',
+          800: 'hsl(var(--neutral-800))',
+          900: 'hsl(var(--neutral-900))',
+          1000: 'hsl(var(--neutral-1000))',
+          1100: 'hsl(var(--neutral-1100))',
+          1200: 'hsl(var(--neutral-1200))',
+          1300: 'hsl(var(--neutral-1300))',
+          1400: 'hsl(var(--neutral-1400))',
+        },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
+          border: 'hsl(var(--primary-border))',
+          hover: 'hsl(var(--primary-hover))',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',

@@ -9,7 +9,6 @@ function Edit({ stroke = '#000', height = 24, width = 24 }: IconProps) {
       viewBox="0 0 24 24"
       fill="none"
       role="img"
-      color="#000000"
     >
       <path
         d="M6 15H3.75C2.7835 15 2 15.7835 2 16.75C2 17.7165 2.7835 18.5 3.75 18.5H13.25C14.2165 18.5 15 19.2835 15 20.25C15 21.2165 14.2165 22 13.25 22H11"

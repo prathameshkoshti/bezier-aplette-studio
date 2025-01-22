@@ -29,16 +29,16 @@ function Color({ color, number, token }: ColorProps) {
           <span>{color}</span>
         </div>
         <div>
-          <span className="rounded-full bg-white border-gray-300 border border-solid py-1 px-2">
+          <span className="rounded-full bg-white border-neutral-300 border border-solid py-1 px-2 text-neutral-900">
             {token}
           </span>
         </div>
       </div>
       <div className="flex gap-2">
-        <span className="rounded-full bg-white text-black border-gray-300 border border-solid py-1 px-3">
+        <span className="rounded-full bg-white text-black border-neutral-300 border border-solid py-1 px-3">
           {whiteContrast.toFixed(2)}: {whiteContrastScore}
         </span>
-        <span className="rounded-full bg-black text-white border-gray-700 border border-solid py-1 px-3">
+        <span className="rounded-full bg-black text-white border-neutral-1000 border border-solid py-1 px-3">
           {blackContrast.toFixed(2)}: {blackContrastScore}
         </span>
       </div>

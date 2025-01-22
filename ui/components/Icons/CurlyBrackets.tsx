@@ -9,7 +9,6 @@ function CurlyBrackets({ width = 24, height = 24, fill = '#000' }: IconProps) {
       viewBox="0 0 24 24"
       fill="none"
       role="img"
-      color="#000000"
     >
       <path
         fillRule="evenodd"

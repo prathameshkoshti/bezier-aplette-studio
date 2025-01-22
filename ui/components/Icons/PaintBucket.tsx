@@ -14,7 +14,6 @@ function PaintBucket({
       viewBox="0 0 24 24"
       fill="none"
       role="img"
-      color="#000000"
     >
       <path
         fillRule="evenodd"
