@@ -12,7 +12,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@components/ui/tooltip';
-import { getColorsFromCoordinates } from '@utils';
+import { getColorsFromCoordinates, uuid } from '@utils';
 import Button from '@components/ui/button';
 import CopyIcon from '@components/Icons/Copy';
 import Color from '@components/Color';
@@ -109,6 +109,7 @@ function Swatch({
             const number = (index + 1) * 100;
             return (
               <Color
+                key={uuid()}
                 color={color}
                 token={`${camelCase(swatch.name)}.${number}`}
                 number={number}
