@@ -55,7 +55,7 @@ function Swatch({
 
   return (
     <AccordionItem value={swatch.id} className={swatchAccordionClasses}>
-      <AccordionTrigger className="p-4">
+      <AccordionTrigger className="p-4" asChild={false}>
         <div className="flex-1">{swatch.name}</div>
         <div className="mr-3 flex gap-2">
           <TooltipProvider delayDuration={1}>

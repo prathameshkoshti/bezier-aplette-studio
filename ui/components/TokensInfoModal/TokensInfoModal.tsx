@@ -26,9 +26,9 @@ function TokensInfoModal({
 
   return (
     <Dialog>
-      <DialogTrigger disabled={!atLeastOneSwatchCreated}>
-        <TooltipProvider delayDuration={1}>
-          <Tooltip>
+      <TooltipProvider delayDuration={1}>
+        <Tooltip>
+          <DialogTrigger disabled={!atLeastOneSwatchCreated} asChild>
             <TooltipTrigger asChild>
               <Button
                 size="icon"
@@ -39,10 +39,10 @@ function TokensInfoModal({
                 <CurlyBracketsIcon width={16} height={16} fill="currentColor" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Tokens</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-      </DialogTrigger>
+          </DialogTrigger>
+          <TooltipContent>Tokens</TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
       <DialogContent
         onOpenAutoFocus={(e) => {
           e.preventDefault();
