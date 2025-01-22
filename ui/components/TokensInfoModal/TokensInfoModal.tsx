@@ -2,6 +2,7 @@ import { getTokensData } from '@utils/index';
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -42,10 +43,15 @@ function TokensInfoModal({
           </Tooltip>
         </TooltipProvider>
       </DialogTrigger>
-      <DialogContent onOpenAutoFocus={(e) => e.preventDefault()}>
+      <DialogContent
+        onOpenAutoFocus={(e) => {
+          e.preventDefault();
+        }}
+      >
         <DialogHeader>
           <DialogTitle>Tokens</DialogTitle>
         </DialogHeader>
+        <DialogDescription />
         <CodeBlock code={swatchData} />
       </DialogContent>
     </Dialog>
