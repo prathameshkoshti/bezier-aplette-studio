@@ -46,7 +46,7 @@
   background-size: 10px 10px;
 }
 
-:root[class*='dark'] .colorGraph {
+:root[class*='dark-mode'] .colorGraph {
   background-image: radial-gradient(
     hsl(var(--neutral-1000)) 1px,
     transparent 1px
