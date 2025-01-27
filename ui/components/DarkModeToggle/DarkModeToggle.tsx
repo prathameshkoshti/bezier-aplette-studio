@@ -8,7 +8,10 @@ import { ToggleGroup, ToggleGroupItem } from '@components/ui/toggle-group';
 import DarkMode from '@components/Icons/DarkMode';
 
 function DarkModeToggle() {
-  const handleTheme = () => {};
+  const handleTheme = () => {
+    document.documentElement.classList.toggle('dark');
+  };
+
   return (
     <div className="flex items-center justify-end gap-2">
       <TooltipProvider delayDuration={1}>
