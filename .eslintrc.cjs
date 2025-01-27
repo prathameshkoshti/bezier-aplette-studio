@@ -73,4 +73,5 @@ module.exports = {
   parserOptions: {
     project: ['./ui/tsconfig.json', './tsconfig.json'],
   },
+  ignorePatterns: ['*.html'],
 };

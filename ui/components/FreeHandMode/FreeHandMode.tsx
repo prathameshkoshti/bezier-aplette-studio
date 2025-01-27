@@ -8,7 +8,6 @@ import {
 } from '@components/ui/tooltip';
 import useColorPicker from '@store/colorPicker';
 import { useShallow } from 'zustand/react/shallow';
-import styles from './freeHandMode.module.css';
 
 function FreeHandMode() {
   const { freeHandMode, updateFreeHandMode } = useColorPicker(
@@ -40,7 +39,7 @@ function FreeHandMode() {
               onClick={handleFreeHandMode}
             >
               <ToggleGroupItem
-                className={styles.toggleGroupItem}
+                className="toggle-group-item"
                 value="freeHandMode"
                 aria-label="Free Hand Mode"
               >
