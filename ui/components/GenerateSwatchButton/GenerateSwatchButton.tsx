@@ -1,5 +1,4 @@
 import { useShallow } from 'zustand/react/shallow';
-import convertColor from 'color-convert';
 import Button from '@components/ui/button';
 import PaintBucketIcon from '@components/Icons/PaintBucket';
 import useColorPicker from '@store/colorPicker';
@@ -75,7 +74,6 @@ function GenerateSwatchButtons() {
   };
 
   const buttonText = swatchEditingId ? 'Update Swatch' : 'Generate Swatch';
-  const fillColor = convertColor.hsv.hex([hue, 50, 100]);
 
   return (
     <div className="flex justify-end gap-4">
@@ -85,12 +83,7 @@ function GenerateSwatchButtons() {
         </Button>
       ) : null}
       <Button className="flex gap-2" onClick={handleOnGenerateClick}>
-        <PaintBucketIcon
-          width={20}
-          height={20}
-          fill="white"
-          paintFill={`#${fillColor}`}
-        />
+        <PaintBucketIcon width={20} height={20} fill="white" />
         {buttonText}
       </Button>
     </div>
