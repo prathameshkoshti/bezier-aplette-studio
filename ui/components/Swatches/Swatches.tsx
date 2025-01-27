@@ -114,8 +114,12 @@ function Swatches() {
               <strong>{stylesLastSaveDataTime}</strong>,<br />
               do you want to import these styles?
             </p>
-            <Button className="flex gap-2" onClick={loadStyles}>
-              <Load fill="#fff" /> Import Styles
+            <Button
+              variant="outline"
+              className="flex gap-2"
+              onClick={loadStyles}
+            >
+              <Load fill="currentColor" /> Import Styles
             </Button>
           </>
         ) : null}
