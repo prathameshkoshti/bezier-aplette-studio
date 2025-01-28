@@ -12,8 +12,6 @@ import {
   DARK_BORDER,
   INTER_REGULAR_FONT,
   LIGHT_BORDER,
-  NOTO_SANS_MONO_REGULAR_FONT,
-  NOTO_SANS_REGULAR_FONT,
   PILL_FONT_SIZE,
   PILL_ITEMS_SPACING,
   PILL_PADDING,
@@ -27,11 +25,7 @@ import {
 
 export async function preloadFonts() {
   try {
-    await Promise.all([
-      figma.loadFontAsync(INTER_REGULAR_FONT),
-      figma.loadFontAsync(NOTO_SANS_REGULAR_FONT),
-      figma.loadFontAsync(NOTO_SANS_MONO_REGULAR_FONT),
-    ]);
+    await Promise.all([figma.loadFontAsync(INTER_REGULAR_FONT)]);
   } catch (error) {
     console.error('Font loading failed:', error);
     figma.notify('Error occurred while loading fonts!', { error: true });
@@ -57,15 +51,11 @@ export const createTextNode = (
   text: string,
   fontSize: number,
   color = BLACK_COLOR,
-  isMono = false,
 ) => {
   const textNode = figma.createText();
   textNode.characters = text;
   textNode.fontSize = fontSize;
   textNode.fills = [figma.util.solidPaint(color)];
-  textNode.fontName = isMono
-    ? NOTO_SANS_MONO_REGULAR_FONT
-    : NOTO_SANS_REGULAR_FONT;
 
   return textNode;
 };
@@ -104,7 +94,7 @@ export const getColorTokenNode = (text: string) => {
     PILL_ITEMS_SPACING,
     'HORIZONTAL',
   );
-  const tokenTextNode = createTextNode(text, PILL_FONT_SIZE, undefined, true);
+  const tokenTextNode = createTextNode(text, PILL_FONT_SIZE, undefined);
 
   tokenNode.fills = [figma.util.solidPaint(WHITE_COLOR)];
   tokenNode.strokes = [figma.util.solidPaint(LIGHT_BORDER)];
@@ -170,18 +160,8 @@ export const createColorNode = (color: ColorData, swatchToken: string) => {
       : BLACK_COLOR;
 
   // primary info
-  const colorName = createTextNode(
-    color.name,
-    DEFAULT_FONT_SIZE,
-    textColor,
-    true,
-  );
-  const colorHex = createTextNode(
-    color.hex,
-    DEFAULT_FONT_SIZE,
-    textColor,
-    true,
-  );
+  const colorName = createTextNode(color.name, DEFAULT_FONT_SIZE, textColor);
+  const colorHex = createTextNode(color.hex, DEFAULT_FONT_SIZE, textColor);
   const tokenNode = getColorTokenNode(`${swatchToken}.${color.name}`);
   colorPrimaryInfo.appendChild(colorName);
   colorPrimaryInfo.appendChild(colorHex);
