@@ -8,11 +8,6 @@ export const LIGHT_BORDER = '#ddd';
 export const DARK_BORDER = '#333';
 
 export const INTER_REGULAR_FONT = { family: 'Inter', style: 'Regular' };
-export const NOTO_SANS_REGULAR_FONT = { family: 'Noto Sans', style: 'Regular' };
-export const NOTO_SANS_MONO_REGULAR_FONT = {
-  family: 'Noto Sans Mono',
-  style: 'Regular',
-};
 
 export const SWATCH_COLLECTION_PADDING = 100;
 export const SWATCH_COLLECTION_ITEMS_SPACING = 100;
