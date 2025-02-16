@@ -51,6 +51,7 @@ export function getColorForCoordinates(
 export const getColorsFromCoordinates = (
   swatch: Swatch,
   curveStyle: CurveStyle,
+  hexColor: string,
 ): string[] => {
   const {
     hue,
@@ -68,6 +69,7 @@ export const getColorsFromCoordinates = (
   const { x: cx2, y: cy2 } = endPointHandle;
   let colorsCords: Point[] = [];
 
+  let midPointIndex: number | undefined;
   if (curveStyle === 'polyBezier' && midPoint) {
     const { x: mx, y: my } = midPoint;
     const dividedSteps = Math.ceil(stepCount / 2);
@@ -77,13 +79,15 @@ export const getColorsFromCoordinates = (
       stepCount % 2 === 0 ? dividedSteps : dividedSteps - 1,
     );
     const colorsCords2 = curve2.getLUT(dividedSteps - 1);
+    // remove midpoint from the array
     colorsCords2.shift();
     colorsCords = [...colorsCords1, ...colorsCords2];
+    midPointIndex = colorsCords1.length - 1;
   } else {
     const curve = new Bezier(x1, y1, cx1, cy1, cx2, cy2, x2, y2);
     colorsCords = curve.getLUT(stepCount - 1);
   }
-  return colorsCords.map((colorCord) => {
+  const colors = colorsCords.map((colorCord) => {
     const { x, y } = colorCord;
     return getColorForCoordinates(
       hue,
@@ -92,16 +96,22 @@ export const getColorsFromCoordinates = (
       MAX_BOUNDARY,
     ) as string;
   });
+
+  // replace mid color with actual hex color provided by user to avoid approximation error
+  if (midPointIndex && hexColor !== '-') colors[midPointIndex] = hexColor;
+
+  return colors;
 };
 
 export const getSwatchData = (
   swatches: Swatches,
   curveStyle: CurveStyle,
+  hexColor: string,
 ): SwatchData[] =>
   swatches.map((swatch) => {
     const { name, id } = swatch;
     const swatchName = camelCase(name);
-    const colors = getColorsFromCoordinates(swatch, curveStyle);
+    const colors = getColorsFromCoordinates(swatch, curveStyle, hexColor);
     return {
       id,
       name,
@@ -129,14 +139,18 @@ export const getSwatchData = (
     };
   });
 
-export const getTokensData = (swatches: Swatches, curveStyle: CurveStyle) => {
+export const getTokensData = (
+  swatches: Swatches,
+  curveStyle: CurveStyle,
+  hexColor: string,
+) => {
   const swatchData: Record<string, Record<string, string>> = {};
 
   for (const swatch of swatches) {
     const { name } = swatch;
     const swatchName = camelCase(name);
 
-    const colors = getColorsFromCoordinates(swatch, curveStyle);
+    const colors = getColorsFromCoordinates(swatch, curveStyle, hexColor);
     swatchData[swatchName] = colors.reduce(
       (acc, color, index) => {
         acc[(index + 1) * 100] = color;
